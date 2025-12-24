@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html class="" lang="uz"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FAQ - AI Assistent</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2563eb", // Blue-600
+                        "primary-hover": "#1d4ed8", // Blue-700
+                        "primary-light": "#eff6ff", // Blue-50
+                        "background-light": "#ffffff",
+                        "background-main": "#f8fafc", // Slate-50
+                        "border-color": "#e2e8f0", // Slate-200
+                        "text-main": "#0f172a", // Slate-900
+                        "text-secondary": "#64748b", // Slate-500
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details[open] summary ~ * {
+            animation: sweep .3s ease-in-out;
+        }
+        @keyframes sweep {
+            0%    {opacity: 0; transform: translateY(-10px)}
+            100%  {opacity: 1; transform: translateY(0)}
+        }
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+    </style>
+</head>
+<body class="bg-background-main text-text-main font-display antialiased flex flex-col min-h-screen selection:bg-blue-100 selection:text-blue-900">
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-border-color">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-20">
+<div class="flex items-center gap-3 cursor-pointer">
+<div class="size-10 rounded-xl bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-500/20 text-white">
+<span class="material-symbols-outlined text-[24px]">smart_toy</span>
+</div>
+<div class="flex flex-col">
+<span class="text-lg font-bold leading-tight text-text-main">AI Assistent</span>
+<span class="text-[10px] font-medium text-blue-600 uppercase tracking-widest">SHNQ</span>
+</div>
+</div>
+<nav class="hidden lg:flex items-center gap-1 p-1.5 bg-slate-50 rounded-full border border-slate-200/60">
+<a class="px-5 py-2 rounded-full text-text-secondary hover:text-text-main text-sm font-medium hover:bg-white hover:shadow-sm transition-all" href="index.html">Bosh sahifa</a>
+<a class="px-5 py-2 rounded-full text-text-secondary hover:text-text-main text-sm font-medium hover:bg-white hover:shadow-sm transition-all" href="about.html">Biz haqimizda</a>
+<a class="px-5 py-2 rounded-full text-text-secondary hover:text-text-main text-sm font-medium hover:bg-white hover:shadow-sm transition-all" href="price.html">Narxlar</a>
+<a class="px-5 py-2 rounded-full bg-white text-primary text-sm font-semibold shadow-sm border border-slate-100 transition-all" href="faq.html">FAQ</a>
+<a class="px-5 py-2 rounded-full text-text-secondary hover:text-text-main text-sm font-medium hover:bg-white hover:shadow-sm transition-all" href="contact.html">Bog'lanish</a>
+</nav>
+<div class="flex items-center gap-3">
+<a class="hidden md:flex items-center gap-2 text-sm font-semibold text-text-secondary hover:text-primary transition-colors mr-2" href="#">
+                        Kirish
+                    </a>
+<button class="hidden md:flex items-center gap-2 px-6 py-2.5 rounded-xl bg-primary text-white text-sm font-semibold hover:bg-primary-hover hover:shadow-lg hover:shadow-blue-500/25 active:scale-95 transition-all">
+                        Boshlash
+                    </button>
+<button class="lg:hidden p-2 text-text-secondary hover:bg-slate-100 rounded-lg transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1 relative">
+<div class="absolute top-0 right-0 -mt-20 -mr-20 w-[30rem] h-[30rem] bg-blue-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
+<div class="absolute top-0 left-0 -ml-20 w-[30rem] h-[30rem] bg-blue-100/50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
+<section class="relative pt-16 pb-12 overflow-hidden">
+<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs font-bold uppercase tracking-wide mb-6 shadow-sm cursor-default">
+<span class="material-symbols-outlined text-[16px] filled">help</span>
+                    Yordam markazi
+                </div>
+<h1 class="text-4xl md:text-5xl font-extrabold text-text-main tracking-tight mb-6">
+                    Tez-tez beriladigan <br/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-blue-500">savollar</span>
+</h1>
+<p class="text-lg text-text-secondary mb-8 leading-relaxed">
+                    SHNQ AI tizimi haqida eng ko'p so'raladigan savollarga javoblar. Agar siz qidirgan savolingizni topa olmasangiz, biz bilan bog'laning.
+                </p>
+<div class="relative max-w-xl mx-auto mb-12">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-gray-400">search</span>
+</div>
+<input class="block w-full pl-11 pr-4 py-4 border-slate-200 rounded-2xl leading-5 bg-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm shadow-lg shadow-blue-500/5 transition-shadow" placeholder="Savolingizni qidiring..." type="text"/>
+</div>
+</div>
+</section>
+<section class="pb-24 px-4 sm:px-6 lg:px-8 relative z-10">
+<div class="max-w-3xl mx-auto space-y-4">
+<details class="group bg-white rounded-2xl border border-slate-200 hover:border-blue-200 shadow-sm hover:shadow-md transition-all duration-200 [&amp;_summary::-webkit-details-marker]:hidden open:ring-1 open:ring-blue-100">
+<summary class="flex cursor-pointer items-center justify-between p-6">
+<h2 class="text-lg font-semibold text-text-main group-hover:text-primary transition-colors">
+                        SHNQ AI Assistent nima va u qanday ishlaydi?
+                    </h2>
+<span class="relative ml-1.5 h-8 w-8 flex-shrink-0 rounded-full bg-slate-50 text-slate-500 group-hover:bg-blue-50 group-hover:text-blue-600 flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined transition duration-300 group-open:-rotate-180">expand_more</span>
+</span>
+</summary>
+<div class="px-6 pb-6 text-text-secondary leading-relaxed">
+<p>
+                        SHNQ AI Assistent - bu qurilish sohasidagi mutaxassislar uchun mo'ljallangan, sun'iy intellektga asoslangan qidiruv va tahlil tizimidir. U O'zbekiston Respublikasining qurilish me'yorlari va qoidalari (SHNQ), davlat standartlari (GOST) va boshqa texnik hujjatlar bazasidan kerakli ma'lumotlarni soniyalar ichida topib beradi va tahlil qiladi.
+                    </p>
+</div>
+</details>
+<details class="group bg-white rounded-2xl border border-slate-200 hover:border-blue-200 shadow-sm hover:shadow-md transition-all duration-200 [&amp;_summary::-webkit-details-marker]:hidden open:ring-1 open:ring-blue-100">
+<summary class="flex cursor-pointer items-center justify-between p-6">
+<h2 class="text-lg font-semibold text-text-main group-hover:text-primary transition-colors">
+                        Qaysi turdagi hujjatlar bazada mavjud?
+                    </h2>
+<span class="relative ml-1.5 h-8 w-8 flex-shrink-0 rounded-full bg-slate-50 text-slate-500 group-hover:bg-blue-50 group-hover:text-blue-600 flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined transition duration-300 group-open:-rotate-180">expand_more</span>
+</span>
+</summary>
+<div class="px-6 pb-6 text-text-secondary leading-relaxed">
+<p>
+                        Tizim bazasida hozirgi kunda amalda bo'lgan barcha SHNQ (Shaharsozlik normalari va qoidalari), QMQ (Qurilish me'yorlari va qoidalari), GOST standartlari, SanQvaM (Sanitariya qoidalari va me'yorlari) hamda yong'in xavfsizligi bo'yicha texnik reglamentlar mavjud. Baza doimiy ravishda yangilanib boriladi.
+                    </p>
+</div>
+</details>
+<details class="group bg-white rounded-2xl border border-slate-200 hover:border-blue-200 shadow-sm hover:shadow-md transition-all duration-200 [&amp;_summary::-webkit-details-marker]:hidden open:ring-1 open:ring-blue-100">
+<summary class="flex cursor-pointer items-center justify-between p-6">
+<h2 class="text-lg font-semibold text-text-main group-hover:text-primary transition-colors">
+                        Tizimdan foydalanish narxi qancha?
+                    </h2>
+<span class="relative ml-1.5 h-8 w-8 flex-shrink-0 rounded-full bg-slate-50 text-slate-500 group-hover:bg-blue-50 group-hover:text-blue-600 flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined transition duration-300 group-open:-rotate-180">expand_more</span>
+</span>
+</summary>
+<div class="px-6 pb-6 text-text-secondary leading-relaxed">
+<p>
+                        Bizda turli xil tarif rejalari mavjud. Boshlang'ich (Basic) reja bepul bo'lib, cheklangan miqdordagi so'rovlarni o'z ichiga oladi. Professional foydalanish uchun esa oylik va yillik obuna variantlari mavjud. Batafsil ma'lumotni "Narxlar" sahifasida ko'rishingiz mumkin.
+                    </p>
+</div>
+</details>
+<details class="group bg-white rounded-2xl border border-slate-200 hover:border-blue-200 shadow-sm hover:shadow-md transition-all duration-200 [&amp;_summary::-webkit-details-marker]:hidden open:ring-1 open:ring-blue-100">
+<summary class="flex cursor-pointer items-center justify-between p-6">
+<h2 class="text-lg font-semibold text-text-main group-hover:text-primary transition-colors">
+                        Yangi hujjatlar qachon qo'shiladi?
+                    </h2>
+<span class="relative ml-1.5 h-8 w-8 flex-shrink-0 rounded-full bg-slate-50 text-slate-500 group-hover:bg-blue-50 group-hover:text-blue-600 flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined transition duration-300 group-open:-rotate-180">expand_more</span>
+</span>
+</summary>
+<div class="px-6 pb-6 text-text-secondary leading-relaxed">
+<p>
+                        Yangi qabul qilingan yoki o'zgartirilgan me'yoriy hujjatlar rasmiy e'lon qilinganidan so'ng 24 soat ichida tizim bazasiga kiritiladi. Bizning jamoamiz qonunchilikdagi o'zgarishlarni doimiy kuzatib boradi.
+                    </p>
+</div>
+</details>
+<details class="group bg-white rounded-2xl border border-slate-200 hover:border-blue-200 shadow-sm hover:shadow-md transition-all duration-200 [&amp;_summary::-webkit-details-marker]:hidden open:ring-1 open:ring-blue-100">
+<summary class="flex cursor-pointer items-center justify-between p-6">
+<h2 class="text-lg font-semibold text-text-main group-hover:text-primary transition-colors">
+                        Mobil ilova bormi?
+                    </h2>
+<span class="relative ml-1.5 h-8 w-8 flex-shrink-0 rounded-full bg-slate-50 text-slate-500 group-hover:bg-blue-50 group-hover:text-blue-600 flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined transition duration-300 group-open:-rotate-180">expand_more</span>
+</span>
+</summary>
+<div class="px-6 pb-6 text-text-secondary leading-relaxed">
+<p>
+                        Hozirgi vaqtda bizning xizmatimiz veb-platforma (sayt) ko'rinishida ishlamoqda va barcha mobil qurilmalar uchun to'liq moslashtirilgan. Android va iOS uchun maxsus mobil ilovalar ustida ish olib borilmoqda va tez orada taqdim etiladi.
+                    </p>
+</div>
+</details>
+</div>
+<div class="max-w-3xl mx-auto mt-16 text-center">
+<div class="bg-white rounded-3xl p-8 md:p-12 border border-slate-200 shadow-xl shadow-blue-500/5 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-blue-50 rounded-full -mr-32 -mt-32 mix-blend-multiply filter blur-3xl opacity-50"></div>
+<div class="absolute bottom-0 left-0 w-64 h-64 bg-blue-100 rounded-full -ml-32 -mb-32 mix-blend-multiply filter blur-3xl opacity-50"></div>
+<div class="relative z-10 flex flex-col items-center">
+<div class="size-16 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 mb-6">
+<span class="material-symbols-outlined text-[32px]">support_agent</span>
+</div>
+<h3 class="text-2xl font-bold text-text-main mb-3">Savolingizga javob topa olmadingizmi?</h3>
+<p class="text-text-secondary mb-8 max-w-lg">
+                        Bizning qo'llab-quvvatlash jamoamiz sizga yordam berishga tayyor. Biz bilan bog'laning va barcha savollaringizga javob oling.
+                    </p>
+<div class="flex gap-4">
+<button class="px-6 py-3 rounded-xl bg-primary text-white font-semibold hover:bg-primary-hover shadow-lg shadow-blue-500/20 active:scale-95 transition-all">
+                            Biz bilan bog'laning
+                        </button>
+<button class="px-6 py-3 rounded-xl bg-white border border-slate-200 text-text-main font-semibold hover:bg-slate-50 hover:border-slate-300 active:scale-95 transition-all">
+                            Telegram orqali yozish
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-white border-t border-border-color pt-16 pb-8">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+<div class="col-span-1 md:col-span-1">
+<div class="flex items-center gap-2 mb-4">
+<div class="size-8 rounded-lg bg-blue-600 flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[20px]">smart_toy</span>
+</div>
+<span class="text-lg font-bold text-text-main">AI Assistent</span>
+</div>
+<p class="text-text-secondary text-sm leading-relaxed mb-6">
+                        Qurilish sohasi uchun ishonchli sun'iy intellekt maslahatchisi.
+                    </p>
+</div>
+<div>
+<h4 class="font-bold text-text-main mb-4 text-sm">Menu</h4>
+<ul class="space-y-3 text-sm text-text-secondary">
+<li><a class="hover:text-blue-600 transition-colors" href="#">Bosh sahifa</a></li>
+<li><a class="hover:text-blue-600 transition-colors" href="#">Biz haqimizda</a></li>
+<li><a class="hover:text-blue-600 transition-colors" href="#">Narxlar</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-text-main mb-4 text-sm">Yordam</h4>
+<ul class="space-y-3 text-sm text-text-secondary">
+<li><a class="hover:text-blue-600 transition-colors" href="#">FAQ</a></li>
+<li><a class="hover:text-blue-600 transition-colors" href="#">Bog'lanish</a></li>
+<li><a class="hover:text-blue-600 transition-colors" href="#">Qo'llanma</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-text-main mb-4 text-sm">Huquqiy</h4>
+<ul class="space-y-3 text-sm text-text-secondary">
+<li><a class="hover:text-blue-600 transition-colors" href="#">Maxfiylik siyosati</a></li>
+<li><a class="hover:text-blue-600 transition-colors" href="#">Foydalanish shartlari</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-text-secondary">
+<p>© 2023 SHNQ AI Assistent. Barcha huquqlar himoyalangan.</p>
+<div class="flex gap-4">
+<a class="text-slate-400 hover:text-blue-600 transition-colors" href="#"><span class="material-symbols-outlined text-lg">public</span></a>
+<a class="text-slate-400 hover:text-blue-600 transition-colors" href="#"><span class="material-symbols-outlined text-lg">mail</span></a>
+</div>
+</div>
+</div>
+</footer>
+
+</body></html>

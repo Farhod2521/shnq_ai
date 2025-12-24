@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="uz"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Biz haqimizda - AI Assistent</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2563eb", // Blue-600
+                        "primary-hover": "#1d4ed8", // Blue-700
+                        "primary-light": "#eff6ff", // Blue-50
+                        "background-light": "#ffffff",
+                        "background-main": "#f8fafc", // Slate-50
+                        "border-color": "#e2e8f0", // Slate-200
+                        "text-main": "#0f172a", // Slate-900
+                        "text-secondary": "#64748b", // Slate-500
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+    </style>
+</head>
+<body class="bg-background-main text-text-main font-display antialiased flex flex-col min-h-screen selection:bg-blue-100 selection:text-blue-900">
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-border-color">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-20">
+<div class="flex items-center gap-3 cursor-pointer">
+<div class="size-10 rounded-xl bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-500/20 text-white">
+<span class="material-symbols-outlined text-[24px]">smart_toy</span>
+</div>
+<div class="flex flex-col">
+<span class="text-lg font-bold leading-tight text-text-main">AI Assistent</span>
+<span class="text-[10px] font-medium text-blue-600 uppercase tracking-widest">SHNQ</span>
+</div>
+</div>
+<nav class="hidden lg:flex items-center gap-1 p-1.5 bg-slate-50 rounded-full border border-slate-200/60">
+<a class="px-5 py-2 rounded-full text-text-secondary hover:text-text-main text-sm font-medium hover:bg-white hover:shadow-sm transition-all" href="home.html">Bosh sahifa</a>
+<a class="px-5 py-2 rounded-full bg-white text-primary text-sm font-semibold shadow-sm border border-slate-100 transition-all" href="about.html">Biz haqimizda</a>
+<a class="px-5 py-2 rounded-full text-text-secondary hover:text-text-main text-sm font-medium hover:bg-white hover:shadow-sm transition-all" href="price.html">Narxlar</a>
+<a class="px-5 py-2 rounded-full text-text-secondary hover:text-text-main text-sm font-medium hover:bg-white hover:shadow-sm transition-all" href="faq.html">FAQ</a>
+<a class="px-5 py-2 rounded-full text-text-secondary hover:text-text-main text-sm font-medium hover:bg-white hover:shadow-sm transition-all" href="contact.html">Bog'lanish</a>
+</nav>
+<div class="flex items-center gap-3">
+<a class="hidden md:flex items-center gap-2 text-sm font-semibold text-text-secondary hover:text-primary transition-colors mr-2" href="#">
+                        Kirish
+                    </a>
+<button class="hidden md:flex items-center gap-2 px-6 py-2.5 rounded-xl bg-primary text-white text-sm font-semibold hover:bg-primary-hover hover:shadow-lg hover:shadow-blue-500/25 active:scale-95 transition-all">
+                        Boshlash
+                    </button>
+<button class="lg:hidden p-2 text-text-secondary hover:bg-slate-100 rounded-lg transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1 relative">
+<div class="absolute inset-0 bg-slate-50/50 -z-10"></div>
+<div class="absolute top-0 right-0 -mt-20 -mr-20 w-[30rem] h-[30rem] bg-blue-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob pointer-events-none"></div>
+<div class="absolute top-0 left-0 -ml-20 w-[30rem] h-[30rem] bg-blue-100/50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000 pointer-events-none"></div>
+<section class="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="max-w-4xl mx-auto">
+<div class="text-center mb-16">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs font-bold uppercase tracking-wide mb-6 shadow-sm">
+<span class="material-symbols-outlined text-[16px] filled">info</span>
+                        Loyiha haqida
+                    </div>
+<h1 class="text-4xl md:text-5xl font-extrabold text-text-main tracking-tight mb-6">
+                        Biz haqimizda
+                    </h1>
+<p class="text-lg text-text-secondary max-w-2xl mx-auto">
+                        Qurilish sohasida innovatsion yechimlar va standartlashtirish.
+                    </p>
+</div>
+<div class="relative bg-white rounded-3xl p-8 md:p-12 shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full opacity-60"></div>
+<div class="relative z-10 flex flex-col md:flex-row gap-8 items-start">
+<div class="hidden md:flex flex-col items-center justify-center p-4 bg-blue-50 rounded-2xl w-24 shrink-0 text-blue-600">
+<span class="material-symbols-outlined text-[40px]">apartment</span>
+</div>
+<div class="space-y-6">
+<h2 class="text-2xl font-bold text-text-main">Muassasa haqida</h2>
+<div class="prose prose-blue prose-lg text-text-secondary leading-relaxed text-justify">
+<p>
+                                    O’zbekiston Respublikasi Qurilish va uy-joy kommunal xo‘jaligi vazirligi huzuridagi 
+                                    <strong class="text-text-main font-semibold">«Qurilishda texnik me`yorlash va standartlashtirish ilmiy-tadqiqot instituti»</strong> 
+                                    Davlat muassasasi O‘zbekiston Respublikasi Prezidentining 2022-yil 22-sentabrdagi 
+                                    “Respublikada kapital Qurilish sohasida buyurtmachi xizmati faoliyatini takomillashtirish chora-tadbirlari to‘g‘risida”gi 
+                                    <span class="bg-blue-50 text-blue-700 px-1.5 py-0.5 rounded font-medium text-sm border border-blue-100 inline-block">PQ-378-son</span> 
+                                    qaroriga asosan O‘zbekiston Respublikasi Qurilish vazirligi huzurida tashkil etilgan.
+                                </p>
+</div>
+</div>
+</div>
+<div class="mt-12 pt-10 border-t border-slate-100 grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2 text-blue-600 mb-1">
+<span class="material-symbols-outlined">verified</span>
+<span class="font-bold text-sm uppercase tracking-wide">Ishonchlilik</span>
+</div>
+<p class="text-sm text-text-secondary">Davlat standartlariga to'liq mos keluvchi rasmiy manba.</p>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2 text-blue-600 mb-1">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-bold text-sm uppercase tracking-wide">Innovatsiya</span>
+</div>
+<p class="text-sm text-text-secondary">Zamonaviy texnologiyalar va ilmiy yondashuv.</p>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2 text-blue-600 mb-1">
+<span class="material-symbols-outlined">gavel</span>
+<span class="font-bold text-sm uppercase tracking-wide">Qonuniylik</span>
+</div>
+<p class="text-sm text-text-secondary">Prezident qarorlari va me'yoriy hujjatlar asosida faoliyat.</p>
+</div>
+</div>
+</div>
+<div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="p-6 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+<div class="size-10 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center mb-4">
+<span class="material-symbols-outlined">history_edu</span>
+</div>
+<h3 class="text-lg font-bold text-text-main mb-2">Tarix va Asos</h3>
+<p class="text-sm text-text-secondary">
+                            Muassasa 2022-yilda tashkil etilgan bo'lib, qurilish sohasidagi islohotlarning muhim qismi hisoblanadi.
+                        </p>
+</div>
+<div class="p-6 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+<div class="size-10 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center mb-4">
+<span class="material-symbols-outlined">target</span>
+</div>
+<h3 class="text-lg font-bold text-text-main mb-2">Maqsad va Vazifalar</h3>
+<p class="text-sm text-text-secondary">
+                            Kapital qurilish sohasida buyurtmachi xizmati faoliyatini takomillashtirish va texnik me'yorlashni rivojlantirish.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-white border-t border-border-color pt-16 pb-8">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+<div class="col-span-1 md:col-span-1">
+<div class="flex items-center gap-2 mb-4">
+<div class="size-8 rounded-lg bg-blue-600 flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[20px]">smart_toy</span>
+</div>
+<span class="text-lg font-bold text-text-main">AI Assistent</span>
+</div>
+<p class="text-text-secondary text-sm leading-relaxed mb-6">
+                        Qurilish sohasi uchun ishonchli sun'iy intellekt maslahatchisi.
+                    </p>
+</div>
+<div>
+<h4 class="font-bold text-text-main mb-4 text-sm">Menu</h4>
+<ul class="space-y-3 text-sm text-text-secondary">
+<li><a class="hover:text-blue-600 transition-colors" href="#">Bosh sahifa</a></li>
+<li><a class="hover:text-blue-600 transition-colors" href="#">Biz haqimizda</a></li>
+<li><a class="hover:text-blue-600 transition-colors" href="#">Narxlar</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-text-main mb-4 text-sm">Yordam</h4>
+<ul class="space-y-3 text-sm text-text-secondary">
+<li><a class="hover:text-blue-600 transition-colors" href="#">FAQ</a></li>
+<li><a class="hover:text-blue-600 transition-colors" href="#">Bog'lanish</a></li>
+<li><a class="hover:text-blue-600 transition-colors" href="#">Qo'llanma</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-text-main mb-4 text-sm">Huquqiy</h4>
+<ul class="space-y-3 text-sm text-text-secondary">
+<li><a class="hover:text-blue-600 transition-colors" href="#">Maxfiylik siyosati</a></li>
+<li><a class="hover:text-blue-600 transition-colors" href="#">Foydalanish shartlari</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-text-secondary">
+<p>© 2023 SHNQ AI Assistent. Barcha huquqlar himoyalangan.</p>
+<div class="flex gap-4">
+<a class="text-slate-400 hover:text-blue-600 transition-colors" href="#"><span class="material-symbols-outlined text-lg">public</span></a>
+<a class="text-slate-400 hover:text-blue-600 transition-colors" href="#"><span class="material-symbols-outlined text-lg">mail</span></a>
+</div>
+</div>
+</div>
+</footer>
+
+</body></html>

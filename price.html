@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html class="" lang="uz"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Narxlar - AI Assistent</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2563eb", // Blue-600
+                        "primary-hover": "#1d4ed8", // Blue-700
+                        "primary-light": "#eff6ff", // Blue-50
+                        "background-light": "#ffffff",
+                        "background-main": "#f8fafc", // Slate-50
+                        "border-color": "#e2e8f0", // Slate-200
+                        "text-main": "#0f172a", // Slate-900
+                        "text-secondary": "#64748b", // Slate-500
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+    </style>
+</head>
+<body class="bg-background-main text-text-main font-display antialiased flex flex-col min-h-screen selection:bg-blue-100 selection:text-blue-900">
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-border-color">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-20">
+<div class="flex items-center gap-3 cursor-pointer">
+<div class="size-10 rounded-xl bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-500/20 text-white">
+<span class="material-symbols-outlined text-[24px]">smart_toy</span>
+</div>
+<div class="flex flex-col">
+<span class="text-lg font-bold leading-tight text-text-main">AI Assistent</span>
+<span class="text-[10px] font-medium text-blue-600 uppercase tracking-widest">SHNQ</span>
+</div>
+</div>
+<nav class="hidden lg:flex items-center gap-1 p-1.5 bg-slate-50 rounded-full border border-slate-200/60">
+<a class="px-5 py-2 rounded-full text-text-secondary hover:text-text-main text-sm font-medium hover:bg-white hover:shadow-sm transition-all" href="index.html">Bosh sahifa</a>
+<a class="px-5 py-2 rounded-full text-text-secondary hover:text-text-main text-sm font-medium hover:bg-white hover:shadow-sm transition-all" href="about.html">Biz haqimizda</a>
+<a class="px-5 py-2 rounded-full bg-white text-primary text-sm font-semibold shadow-sm border border-slate-100 transition-all" href="price.html">Narxlar</a>
+<a class="px-5 py-2 rounded-full text-text-secondary hover:text-text-main text-sm font-medium hover:bg-white hover:shadow-sm transition-all" href="faq.html">FAQ</a>
+<a class="px-5 py-2 rounded-full text-text-secondary hover:text-text-main text-sm font-medium hover:bg-white hover:shadow-sm transition-all" href="contact.html">Bog'lanish</a>
+</nav>
+<div class="flex items-center gap-3">
+<a class="hidden md:flex items-center gap-2 text-sm font-semibold text-text-secondary hover:text-primary transition-colors mr-2" href="#">
+                        Kirish
+                    </a>
+<button class="hidden md:flex items-center gap-2 px-6 py-2.5 rounded-xl bg-primary text-white text-sm font-semibold hover:bg-primary-hover hover:shadow-lg hover:shadow-blue-500/25 active:scale-95 transition-all">
+                        Boshlash
+                    </button>
+<button class="lg:hidden p-2 text-text-secondary hover:bg-slate-100 rounded-lg transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1">
+<section class="relative pt-24 pb-32 overflow-hidden bg-white">
+<div class="absolute top-0 right-0 -mt-20 -mr-20 w-[30rem] h-[30rem] bg-blue-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
+<div class="absolute top-0 left-0 -ml-20 w-[30rem] h-[30rem] bg-blue-100/50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
+<div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[40rem] h-[40rem] bg-slate-50 rounded-full mix-blend-multiply filter blur-3xl opacity-50 -z-10"></div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs font-bold uppercase tracking-wide mb-8 shadow-sm hover:shadow-md transition-shadow cursor-default">
+<span class="material-symbols-outlined text-[16px] filled">payments</span>
+                    Qulay Tariflar
+                </div>
+<h1 class="text-4xl md:text-5xl font-extrabold text-text-main tracking-tight mb-6 leading-[1.1]">
+                    Ehtiyojlaringizga mos <br class="hidden sm:block"/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-blue-500">Narxlar Rejasi</span>
+</h1>
+<p class="text-lg text-text-secondary max-w-2xl mx-auto mb-10 leading-relaxed">
+                    Kichik loyihalardan tortib yirik qurilish kompaniyalarigacha - SHNQ AI barcha uchun hamyonbop yechimlarni taklif etadi.
+                </p>
+<div class="flex justify-center items-center mb-16">
+<div class="bg-slate-100 p-1.5 rounded-full inline-flex items-center border border-slate-200 shadow-inner">
+<button class="px-6 py-2.5 rounded-full bg-white text-primary text-sm font-bold shadow-sm transition-all ring-1 ring-black/5">
+                            Oylik to'lov
+                        </button>
+<button class="px-6 py-2.5 rounded-full text-text-secondary hover:text-text-main text-sm font-medium transition-all flex items-center gap-2">
+                            Yillik to'lov
+                            <span class="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-0.5 rounded-full">-20%</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-start">
+<div class="bg-white rounded-3xl p-8 border border-slate-200 hover:border-blue-300 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 flex flex-col h-full relative group">
+<div class="mb-6">
+<h3 class="text-lg font-bold text-text-main mb-2">Boshlang'ich</h3>
+<p class="text-sm text-text-secondary">Yakka tartibdagi muhandislar uchun</p>
+</div>
+<div class="flex items-baseline mb-6">
+<span class="text-4xl font-extrabold text-text-main tracking-tight">29</span>
+<div class="flex flex-col items-start ml-1">
+<span class="text-lg font-bold text-text-main">000 so'm</span>
+<span class="text-xs text-text-secondary font-medium">/oyiga</span>
+</div>
+</div>
+<div class="w-full h-px bg-slate-100 mb-6"></div>
+<ul class="space-y-4 mb-8 flex-1 text-left">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-blue-600 text-[20px] shrink-0 mt-0.5">check_circle</span>
+<span class="text-sm text-text-main font-medium">Oyiga 100 ta so'rov</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-blue-600 text-[20px] shrink-0 mt-0.5">check_circle</span>
+<span class="text-sm text-text-main font-medium">SHNQ bazasiga kirish</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-blue-600 text-[20px] shrink-0 mt-0.5">check_circle</span>
+<span class="text-sm text-text-main font-medium">Telegram bot orqali kirish</span>
+</li>
+<li class="flex items-start gap-3 opacity-50">
+<span class="material-symbols-outlined text-slate-400 text-[20px] shrink-0 mt-0.5">block</span>
+<span class="text-sm text-slate-500 line-through">Tarixni saqlash</span>
+</li>
+</ul>
+<button class="w-full py-4 rounded-xl border-2 border-slate-200 text-text-main font-bold hover:border-blue-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300">
+                            Tanlash
+                        </button>
+</div>
+<div class="bg-white rounded-3xl p-8 border-2 border-blue-600 shadow-2xl shadow-blue-500/20 flex flex-col h-full relative transform md:-translate-y-4 z-10">
+<div class="absolute top-0 inset-x-0 -mt-4 flex justify-center">
+<span class="bg-blue-600 text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider shadow-lg">Eng mashhur</span>
+</div>
+<div class="mb-6 mt-2">
+<h3 class="text-xl font-bold text-text-main mb-2">Professional</h3>
+<p class="text-sm text-text-secondary">Kichik guruhlar va faol foydalanuvchilar</p>
+</div>
+<div class="flex items-baseline mb-6">
+<span class="text-5xl font-extrabold text-text-main tracking-tight">59</span>
+<div class="flex flex-col items-start ml-1">
+<span class="text-xl font-bold text-text-main">000 so'm</span>
+<span class="text-xs text-text-secondary font-medium">/oyiga</span>
+</div>
+</div>
+<div class="w-full h-px bg-slate-100 mb-6"></div>
+<ul class="space-y-4 mb-8 flex-1 text-left">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-blue-600 text-[20px] shrink-0 mt-0.5">check_circle</span>
+<span class="text-sm text-text-main font-bold">Oyiga 500 ta so'rov</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-blue-600 text-[20px] shrink-0 mt-0.5">check_circle</span>
+<span class="text-sm text-text-main font-medium">Barcha me'yoriy hujjatlar (SHNQ, GOST)</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-blue-600 text-[20px] shrink-0 mt-0.5">check_circle</span>
+<span class="text-sm text-text-main font-medium">Tezkor javoblar (Turbo rejimi)</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-blue-600 text-[20px] shrink-0 mt-0.5">check_circle</span>
+<span class="text-sm text-text-main font-medium">Chat tarixini saqlash</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-blue-600 text-[20px] shrink-0 mt-0.5">check_circle</span>
+<span class="text-sm text-text-main font-medium">Hujjatlarni PDF ga eksport qilish</span>
+</li>
+</ul>
+<button class="w-full py-4 rounded-xl bg-blue-600 text-white font-bold hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/30 active:scale-95 transition-all duration-300">
+                            Hoziroq boshlash
+                        </button>
+</div>
+<div class="bg-white rounded-3xl p-8 border border-slate-200 hover:border-blue-300 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 flex flex-col h-full relative group">
+<div class="mb-6">
+<h3 class="text-lg font-bold text-text-main mb-2">Biznes</h3>
+<p class="text-sm text-text-secondary">Yirik kompaniyalar uchun cheksiz imkoniyatlar</p>
+</div>
+<div class="flex items-baseline mb-6">
+<span class="text-4xl font-extrabold text-text-main tracking-tight">99</span>
+<div class="flex flex-col items-start ml-1">
+<span class="text-lg font-bold text-text-main">000 so'm</span>
+<span class="text-xs text-text-secondary font-medium">/oyiga</span>
+</div>
+</div>
+<div class="w-full h-px bg-slate-100 mb-6"></div>
+<ul class="space-y-4 mb-8 flex-1 text-left">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-blue-600 text-[20px] shrink-0 mt-0.5">verified</span>
+<span class="text-sm text-text-main font-bold">Cheklanmagan so'rovlar</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-blue-600 text-[20px] shrink-0 mt-0.5">verified</span>
+<span class="text-sm text-text-main font-medium">Barcha funksiyalar</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-blue-600 text-[20px] shrink-0 mt-0.5">verified</span>
+<span class="text-sm text-text-main font-medium">API orqali ulanish imkoniyati</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-blue-600 text-[20px] shrink-0 mt-0.5">verified</span>
+<span class="text-sm text-text-main font-medium">Shaxsiy menejer biriktiriladi</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-blue-600 text-[20px] shrink-0 mt-0.5">verified</span>
+<span class="text-sm text-text-main font-medium">Jamoaviy foydalanish (3 kishi)</span>
+</li>
+</ul>
+<button class="w-full py-4 rounded-xl border-2 border-slate-200 text-text-main font-bold hover:border-blue-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300">
+                            Tanlash
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-slate-50 border-t border-border-color">
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+<h2 class="text-3xl font-bold text-text-main mb-4">Ko'p so'raladigan savollar</h2>
+<p class="text-text-secondary">To'lovlar va tariflar bo'yicha eng muhim savollarga javoblar.</p>
+</div>
+<div class="space-y-6">
+<div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+<h3 class="font-bold text-text-main text-lg mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-blue-600">help</span>
+                            To'lovni qanday amalga oshirishim mumkin?
+                        </h3>
+<p class="text-text-secondary text-sm leading-relaxed ml-8">
+                            Siz to'lovni Payme, Click yoki Uzcard orqali amalga oshirishingiz mumkin. Korporativ mijozlar uchun bank o'tkazmasi (perechislenie) orqali to'lov imkoniyati mavjud.
+                        </p>
+</div>
+<div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+<h3 class="font-bold text-text-main text-lg mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-blue-600">help</span>
+                            Tarif rejasini o'zgartira olamanmi?
+                        </h3>
+<p class="text-text-secondary text-sm leading-relaxed ml-8">
+                            Ha, albatta. Siz istalgan vaqtda shaxsiy kabinetingiz orqali tarif rejasini yangilashingiz (upgrade) yoki o'zgartirishingiz mumkin. O'tish davrida qolgan mablag' yangi tarifga o'tkaziladi.
+                        </p>
+</div>
+<div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+<h3 class="font-bold text-text-main text-lg mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-blue-600">help</span>
+                            Bepul sinov muddati bormi?
+                        </h3>
+<p class="text-text-secondary text-sm leading-relaxed ml-8">
+                            Yangi ro'yxatdan o'tgan foydalanuvchilar uchun 3 kunlik bepul sinov muddati (Trial) taqdim etiladi. Bu davrda siz "Professional" tarifi imkoniyatlaridan foydalanib ko'rishingiz mumkin.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-white border-t border-border-color pt-16 pb-8">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+<div class="col-span-1 md:col-span-1">
+<div class="flex items-center gap-2 mb-4">
+<div class="size-8 rounded-lg bg-blue-600 flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[20px]">smart_toy</span>
+</div>
+<span class="text-lg font-bold text-text-main">AI Assistent</span>
+</div>
+<p class="text-text-secondary text-sm leading-relaxed mb-6">
+                        Qurilish sohasi uchun ishonchli sun'iy intellekt maslahatchisi.
+                    </p>
+</div>
+<div>
+<h4 class="font-bold text-text-main mb-4 text-sm">Menu</h4>
+<ul class="space-y-3 text-sm text-text-secondary">
+<li><a class="hover:text-blue-600 transition-colors" href="#">Bosh sahifa</a></li>
+<li><a class="hover:text-blue-600 transition-colors" href="#">Biz haqimizda</a></li>
+<li><a class="hover:text-blue-600 transition-colors" href="#">Narxlar</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-text-main mb-4 text-sm">Yordam</h4>
+<ul class="space-y-3 text-sm text-text-secondary">
+<li><a class="hover:text-blue-600 transition-colors" href="#">FAQ</a></li>
+<li><a class="hover:text-blue-600 transition-colors" href="#">Bog'lanish</a></li>
+<li><a class="hover:text-blue-600 transition-colors" href="#">Qo'llanma</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-text-main mb-4 text-sm">Huquqiy</h4>
+<ul class="space-y-3 text-sm text-text-secondary">
+<li><a class="hover:text-blue-600 transition-colors" href="#">Maxfiylik siyosati</a></li>
+<li><a class="hover:text-blue-600 transition-colors" href="#">Foydalanish shartlari</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-text-secondary">
+<p>© 2023 SHNQ AI Assistent. Barcha huquqlar himoyalangan.</p>
+<div class="flex gap-4">
+<a class="text-slate-400 hover:text-blue-600 transition-colors" href="#"><span class="material-symbols-outlined text-lg">public</span></a>
+<a class="text-slate-400 hover:text-blue-600 transition-colors" href="#"><span class="material-symbols-outlined text-lg">mail</span></a>
+</div>
+</div>
+</div>
+</footer>
+
+</body></html>
