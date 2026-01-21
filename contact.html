@@ -62,10 +62,22 @@
             66% { transform: translate(-20px, 20px) scale(0.9); }
             100% { transform: translate(0px, 0px) scale(1); }
         }
+        .dark .text-text-main {
+            color: #e2e8f0;
+        }
+        .dark .text-text-secondary {
+            color: #94a3b8;
+        }
+        .dark .border-border-color {
+            border-color: #1f2937;
+        }
+        .dark .bg-background-main {
+            background-color: #0b1120;
+        }
     </style>
 </head>
-<body class="bg-background-main text-text-main font-display antialiased flex flex-col min-h-screen selection:bg-blue-100 selection:text-blue-900">
-<header class="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-border-color">
+<body class="bg-background-main text-text-main font-display antialiased flex flex-col min-h-screen selection:bg-blue-100 selection:text-blue-900 dark:selection:bg-blue-900 dark:selection:text-blue-100">
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-border-color dark:bg-slate-900/90 dark:border-slate-800">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="flex justify-between items-center h-20">
 <div class="flex items-center gap-3 cursor-pointer">
@@ -77,28 +89,46 @@
 <span class="text-[10px] font-medium text-blue-600 uppercase tracking-widest">SHNQ</span>
 </div>
 </div>
-<nav class="hidden lg:flex items-center gap-1 p-1.5 bg-slate-50 rounded-full border border-slate-200/60">
-<a class="px-5 py-2 rounded-full text-text-secondary hover:text-text-main text-sm font-medium hover:bg-white hover:shadow-sm transition-all" href="index.html">Bosh sahifa</a>
-<a class="px-5 py-2 rounded-full text-text-secondary hover:text-text-main text-sm font-medium hover:bg-white hover:shadow-sm transition-all" href="about.html">Biz haqimizda</a>
-<a class="px-5 py-2 rounded-full text-text-secondary hover:text-text-main text-sm font-medium hover:bg-white hover:shadow-sm transition-all" href="price.html">Narxlar</a>
-<a class="px-5 py-2 rounded-full text-text-secondary hover:text-text-main text-sm font-medium hover:bg-white hover:shadow-sm transition-all" href="faq.html">FAQ</a>
-<a class="px-5 py-2 rounded-full bg-white text-primary text-sm font-semibold shadow-sm border border-slate-100 transition-all" href="contact.html">Bog'lanish</a>
+<nav class="hidden lg:flex items-center gap-1 p-1.5 bg-slate-50 rounded-full border border-slate-200/60 dark:bg-slate-900 dark:border-slate-800">
+<a class="px-5 py-2 rounded-full text-text-secondary hover:text-text-main text-sm font-medium hover:bg-white hover:shadow-sm transition-all dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800" data-i18n="nav.home" href="index.html">Bosh sahifa</a>
+<a class="px-5 py-2 rounded-full text-text-secondary hover:text-text-main text-sm font-medium hover:bg-white hover:shadow-sm transition-all dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800" data-i18n="about.title" href="about.html">Biz haqimizda</a>
+<a class="px-5 py-2 rounded-full text-text-secondary hover:text-text-main text-sm font-medium hover:bg-white hover:shadow-sm transition-all dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800" data-i18n="nav.pricing" href="price.html">Narxlar</a>
+<a class="px-5 py-2 rounded-full text-text-secondary hover:text-text-main text-sm font-medium hover:bg-white hover:shadow-sm transition-all dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800" data-i18n="nav.faq" href="faq.html">FAQ</a>
+<a class="px-5 py-2 rounded-full bg-white text-primary text-sm font-semibold shadow-sm border border-slate-100 transition-all dark:bg-slate-800 dark:text-blue-300 dark:border-slate-700" data-i18n="nav.contact" href="contact.html">Bog'lanish</a>
 </nav>
 <div class="flex items-center gap-3">
-<a class="hidden md:flex items-center gap-2 text-sm font-semibold text-text-secondary hover:text-primary transition-colors mr-2" href="#">
+                <div class="hidden md:flex items-center gap-1 rounded-full bg-slate-100 border border-slate-200/60 p-1 text-[11px] font-semibold uppercase tracking-wide text-slate-600 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-200">
+                    <button class="lang-btn px-2.5 py-1 rounded-full bg-white text-slate-700 shadow-sm dark:bg-slate-700 dark:text-white" data-lang="uz" type="button">UZ</button>
+                    <button class="lang-btn px-2.5 py-1 rounded-full hover:bg-white/70 dark:hover:bg-slate-700" data-lang="ru" type="button">RU</button>
+                    <button class="lang-btn px-2.5 py-1 rounded-full hover:bg-white/70 dark:hover:bg-slate-700" data-lang="en" type="button">EN</button>
+                    <button class="lang-btn px-2.5 py-1 rounded-full hover:bg-white/70 dark:hover:bg-slate-700" data-lang="oz" type="button">O'Z</button>
+                </div>
+                <button id="theme-toggle" class="dark-mode-toggle p-2 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors">
+                    <span id="sun-icon" class="hidden dark:flex items-center justify-center">
+                        <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+                        </svg>
+                    </span>
+                    <span id="moon-icon" class="flex dark:hidden items-center justify-center">
+                        <svg class="w-5 h-5 text-slate-700" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                    </span>
+                </button>
+<a class="hidden md:flex items-center gap-2 text-sm font-semibold text-text-secondary hover:text-primary transition-colors mr-2 dark:text-slate-300 dark:hover:text-blue-300" href="#">
                         Kirish
                     </a>
-<button class="hidden md:flex items-center gap-2 px-6 py-2.5 rounded-xl bg-primary text-white text-sm font-semibold hover:bg-primary-hover hover:shadow-lg hover:shadow-blue-500/25 active:scale-95 transition-all">
+<button class="hidden md:flex items-center gap-2 px-6 py-2.5 rounded-xl bg-primary text-white text-sm font-semibold hover:bg-primary-hover hover:shadow-lg hover:shadow-blue-500/25 active:scale-95 transition-all dark:hover:shadow-blue-900/40">
                         Boshlash
                     </button>
-<button class="lg:hidden p-2 text-text-secondary hover:bg-slate-100 rounded-lg transition-colors">
+<button class="lg:hidden p-2 text-text-secondary hover:bg-slate-100 rounded-lg transition-colors dark:text-slate-300 dark:hover:bg-slate-800">
 <span class="material-symbols-outlined">menu</span>
 </button>
 </div>
 </div>
 </div>
 </header>
-<main class="flex-1 bg-white relative overflow-hidden">
+<main class="flex-1 bg-white relative overflow-hidden dark:bg-slate-950">
 <div class="absolute top-0 right-0 w-[40rem] h-[40rem] bg-blue-50/50 rounded-full mix-blend-multiply filter blur-3xl opacity-60 animate-blob pointer-events-none"></div>
 <div class="absolute bottom-0 left-0 w-[40rem] h-[40rem] bg-slate-50/50 rounded-full mix-blend-multiply filter blur-3xl opacity-60 animate-blob animation-delay-2000 pointer-events-none"></div>
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
@@ -109,7 +139,7 @@
                         Yordam markazi
                     </div>
 <h1 class="text-4xl md:text-5xl font-extrabold text-text-main tracking-tight mb-6">
-                        Biz bilan <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-blue-500">bog'laning</span>
+                        <span data-i18n="contact.title_line1">Biz bilan</span> <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-blue-500" data-i18n="contact.title_line2">bog'laning</span>
 </h1>
 <p class="text-lg text-text-secondary leading-relaxed mb-12">
                         SHNQ AI platformasi bo'yicha savollaringiz, takliflaringiz yoki hamkorlik masalalari bo'yicha bizga murojaat qiling. Mutaxassislarimiz sizga tez orada javob berishadi.
@@ -230,5 +260,102 @@
 </div>
 </div>
 </footer>
+
+<script src="translations.js"></script>
+<script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const sunIcon = document.getElementById('sun-icon');
+    const moonIcon = document.getElementById('moon-icon');
+
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    const currentTheme = localStorage.getItem('theme');
+
+    if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
+        document.documentElement.classList.add('dark');
+        sunIcon.classList.remove('hidden');
+        moonIcon.classList.add('hidden');
+    } else {
+        document.documentElement.classList.remove('dark');
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.remove('hidden');
+    }
+
+    themeToggle.addEventListener('click', () => {
+        if (document.documentElement.classList.contains('dark')) {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+            sunIcon.classList.add('hidden');
+            moonIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+            sunIcon.classList.remove('hidden');
+            moonIcon.classList.add('hidden');
+        }
+    });
+
+    const langButtons = document.querySelectorAll('.lang-btn');
+
+    const setActiveLangButton = (lang) => {
+        langButtons.forEach((button) => {
+            const isActive = button.dataset.lang === lang;
+            button.classList.toggle('bg-white', isActive);
+            button.classList.toggle('text-slate-700', isActive);
+            button.classList.toggle('shadow-sm', isActive);
+            button.classList.toggle('dark:bg-slate-700', isActive);
+            button.classList.toggle('dark:text-white', isActive);
+        });
+    };
+
+    const applyTranslations = (translations) => {
+        document.querySelectorAll('[data-i18n]').forEach((element) => {
+            const key = element.getAttribute('data-i18n');
+            if (translations[key]) {
+                element.textContent = translations[key];
+            }
+        });
+    };
+
+    const getFallbackTranslations = (lang) => {
+        if (window.TRANSLATIONS && window.TRANSLATIONS[lang]) {
+            return window.TRANSLATIONS[lang];
+        }
+        return null;
+    };
+
+    const loadTranslations = async (lang) => {
+        let translations = null;
+        try {
+            const response = await fetch(`lang_${lang}.json`, { cache: 'no-store' });
+            if (response.ok) {
+                translations = await response.json();
+            }
+        } catch (error) {
+            console.error('Failed to load translations:', error);
+        }
+
+        if (!translations) {
+            translations = getFallbackTranslations(lang);
+        }
+
+        if (!translations) {
+            return;
+        }
+
+        applyTranslations(translations);
+        document.documentElement.setAttribute('lang', lang);
+        localStorage.setItem('lang', lang);
+        setActiveLangButton(lang);
+    };
+
+    const initialLang = localStorage.getItem('lang') || document.documentElement.getAttribute('lang') || 'uz';
+    loadTranslations(initialLang);
+
+    langButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            loadTranslations(button.dataset.lang);
+        });
+    });
+</script>
 
 </body></html>

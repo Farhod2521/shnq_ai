@@ -21,6 +21,11 @@
                         "border-color": "#e2e8f0",
                         "text-main": "#0f172a",
                         "text-secondary": "#64748b",
+                        // Dark mode colors
+                        "dark-bg": "#0f172a",
+                        "dark-card": "#1e293b",
+                        "dark-text": "#f8fafc",
+                        "dark-border": "#334155",
                     },
                     fontFamily: {
                         "display": ["Inter", "sans-serif"]
@@ -51,6 +56,14 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #64748b;
         }
+        /* Dark mode scrollbar */
+        .dark ::-webkit-scrollbar-thumb {
+            background: #475569;
+        }
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+        
         .animate-blob {
             animation: blob 7s infinite;
         }
@@ -81,6 +94,11 @@
             50% { opacity: 1; }
         }
         
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
         .fade-in-up {
             animation: fadeInUp 0.4s ease-out forwards;
         }
@@ -100,11 +118,27 @@
         .hidden {
             display: none;
         }
+        
+        .dark-mode-toggle {
+            transition: all 0.3s ease;
+        }
+        
+        .dark-mode-toggle:hover {
+            transform: scale(1.1);
+        }
+        
+        .moon-icon {
+            animation: rotate 20s linear infinite;
+        }
+        
+        .sun-icon {
+            animation: rotate 30s linear infinite;
+        }
     </style>
 </head>
-<body class="bg-background-main text-text-main font-display antialiased flex flex-col min-h-screen selection:bg-blue-100 selection:text-blue-900">
+<body class="bg-background-main text-text-main font-display antialiased flex flex-col min-h-screen selection:bg-blue-100 selection:text-blue-900 dark:bg-dark-bg dark:text-dark-text">
 
-<header class="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-border-color">
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-border-color dark:bg-dark-card/90 dark:border-dark-border">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-20">
             <div class="flex items-center gap-3 cursor-pointer">
@@ -112,25 +146,47 @@
                     <span class="material-symbols-outlined text-[24px]">smart_toy</span>
                 </div>
                 <div class="flex flex-col">
-                    <span class="text-lg font-bold leading-tight text-text-main">AI Assistent</span>
-                    <span class="text-[10px] font-medium text-blue-600 uppercase tracking-widest">SHNQ</span>
+                    <span class="text-lg font-bold leading-tight text-text-main dark:text-dark-text">AI Assistent</span>
+                    <span class="text-[10px] font-medium text-blue-600 uppercase tracking-widest dark:text-blue-400">SHNQ</span>
                 </div>
             </div>
-            <nav class="hidden lg:flex items-center gap-1 p-1.5 bg-slate-50 rounded-full border border-slate-200/60">
-                <a class="px-5 py-2 rounded-full bg-white text-primary text-sm font-semibold shadow-sm border border-slate-100 transition-all" href="index.html">Bosh sahifa</a>
-                <a class="px-5 py-2 rounded-full text-text-secondary hover:text-text-main text-sm font-medium hover:bg-white hover:shadow-sm transition-all" href="about.html">Biz haqimizda</a>
-                <a class="px-5 py-2 rounded-full text-text-secondary hover:text-text-main text-sm font-medium hover:bg-white hover:shadow-sm transition-all" href="/price.html">Narxlar</a>
-                <a class="px-5 py-2 rounded-full text-text-secondary hover:text-text-main text-sm font-medium hover:bg-white hover:shadow-sm transition-all" href="faq.html">FAQ</a>
-                <a class="px-5 py-2 rounded-full text-text-secondary hover:text-text-main text-sm font-medium hover:bg-white hover:shadow-sm transition-all" href="contact.html">Bog'lanish</a>
+            <nav class="hidden lg:flex items-center gap-1 p-1.5 bg-slate-50 rounded-full border border-slate-200/60 dark:bg-slate-800/50 dark:border-slate-700/60">
+                <a class="px-5 py-2 rounded-full bg-white text-primary text-sm font-semibold shadow-sm border border-slate-100 transition-all dark:bg-slate-700 dark:text-blue-400 dark:border-slate-600" data-i18n="nav.home" href="index.html">Bosh sahifa</a>
+                <a class="px-5 py-2 rounded-full text-text-secondary hover:text-text-main text-sm font-medium hover:bg-white hover:shadow-sm transition-all dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-700" data-i18n="nav.docs" href="about.html">Hujjatlar</a>
+                <a class="px-5 py-2 rounded-full text-text-secondary hover:text-text-main text-sm font-medium hover:bg-white hover:shadow-sm transition-all dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-700" data-i18n="nav.pricing" href="/price.html">Narxlar</a>
+                <a class="px-5 py-2 rounded-full text-text-secondary hover:text-text-main text-sm font-medium hover:bg-white hover:shadow-sm transition-all dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-700" data-i18n="nav.faq" href="faq.html">FAQ</a>
+                <a class="px-5 py-2 rounded-full text-text-secondary hover:text-text-main text-sm font-medium hover:bg-white hover:shadow-sm transition-all dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-700" data-i18n="nav.contact" href="contact.html">Bog'lanish</a>
             </nav>
             <div class="flex items-center gap-3">
-                <a class="hidden md:flex items-center gap-2 text-sm font-semibold text-text-secondary hover:text-primary transition-colors mr-2" href="#">
+                <div class="hidden md:flex items-center gap-1 rounded-full bg-slate-100 border border-slate-200/60 p-1 text-[11px] font-semibold uppercase tracking-wide text-slate-600 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-200">
+                    <button class="lang-btn px-2.5 py-1 rounded-full bg-white text-slate-700 shadow-sm dark:bg-slate-700 dark:text-white" data-lang="uz" type="button">UZ</button>
+                    <button class="lang-btn px-2.5 py-1 rounded-full hover:bg-white/70 dark:hover:bg-slate-700" data-lang="ru" type="button">RU</button>
+                    <button class="lang-btn px-2.5 py-1 rounded-full hover:bg-white/70 dark:hover:bg-slate-700" data-lang="en" type="button">EN</button>
+                    <button class="lang-btn px-2.5 py-1 rounded-full hover:bg-white/70 dark:hover:bg-slate-700" data-lang="oz" type="button">O'Z</button>
+                </div>
+                <!-- Dark/Light Mode Toggle -->
+                <button id="theme-toggle" class="dark-mode-toggle p-2 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors">
+                    <!-- Sun Icon (Light Mode) -->
+                    <span id="sun-icon" class="hidden dark:flex items-center justify-center">
+                        <svg class="w-5 h-5 text-yellow-500 sun-icon" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+                        </svg>
+                    </span>
+                    <!-- Moon Icon (Dark Mode) -->
+                    <span id="moon-icon" class="flex dark:hidden items-center justify-center">
+                        <svg class="w-5 h-5 text-slate-700 moon-icon" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                    </span>
+                </button>
+                
+                <a class="hidden md:flex items-center gap-2 text-sm font-semibold text-text-secondary hover:text-primary transition-colors mr-2 dark:text-slate-300 dark:hover:text-blue-400" href="#">
                     Kirish
                 </a>
-                <button class="hidden md:flex items-center gap-2 px-6 py-2.5 rounded-xl bg-primary text-white text-sm font-semibold hover:bg-primary-hover hover:shadow-lg hover:shadow-blue-500/25 active:scale-95 transition-all">
+                <button class="hidden md:flex items-center gap-2 px-6 py-2.5 rounded-xl bg-primary text-white text-sm font-semibold hover:bg-primary-hover hover:shadow-lg hover:shadow-blue-500/25 active:scale-95 transition-all dark:bg-blue-700 dark:hover:bg-blue-600">
                     Boshlash
                 </button>
-                <button class="lg:hidden p-2 text-text-secondary hover:bg-slate-100 rounded-lg transition-colors">
+                <button class="lg:hidden p-2 text-text-secondary hover:bg-slate-100 rounded-lg transition-colors dark:text-slate-300 dark:hover:bg-slate-700">
                     <span class="material-symbols-outlined">menu</span>
                 </button>
             </div>
@@ -139,55 +195,55 @@
 </header>
 
 <main class="flex-1">
-    <section class="relative pt-24 pb-32 overflow-hidden bg-white">
-        <div class="absolute top-0 right-0 -mt-20 -mr-20 w-[30rem] h-[30rem] bg-blue-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
-        <div class="absolute top-0 left-0 -ml-20 w-[30rem] h-[30rem] bg-blue-100/50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
-        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[40rem] h-[40rem] bg-slate-50 rounded-full mix-blend-multiply filter blur-3xl opacity-50 -z-10"></div>
+    <section class="relative pt-24 pb-32 overflow-hidden bg-white dark:bg-dark-bg">
+        <div class="absolute top-0 right-0 -mt-20 -mr-20 w-[30rem] h-[30rem] bg-blue-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob dark:bg-blue-900/20"></div>
+        <div class="absolute top-0 left-0 -ml-20 w-[30rem] h-[30rem] bg-blue-100/50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000 dark:bg-blue-800/20"></div>
+        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[40rem] h-[40rem] bg-slate-50 rounded-full mix-blend-multiply filter blur-3xl opacity-50 -z-10 dark:bg-slate-900/30"></div>
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs font-bold uppercase tracking-wide mb-8 shadow-sm hover:shadow-md transition-shadow cursor-default">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs font-bold uppercase tracking-wide mb-8 shadow-sm hover:shadow-md transition-shadow cursor-default dark:bg-blue-900/30 dark:border-blue-800/30 dark:text-blue-400">
                 <span class="material-symbols-outlined text-[16px] filled">auto_awesome</span>
                 SHNQ AI v2.0
             </div>
             
-            <h1 class="text-5xl md:text-7xl font-extrabold text-text-main tracking-tight mb-8 leading-[1.1]">
-                Qurilish me'yorlari uchun <br/>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-blue-500">Intellektual Yordamchi</span>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-text-main tracking-tight mb-8 leading-[1.1] dark:text-dark-text">
+                <span data-i18n="hero.title_line1">Qurilish me'yorlari uchun</span> <br/>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-blue-500 dark:from-blue-400 dark:to-blue-300" data-i18n="hero.title_line2">Intellektual Yordamchi</span>
             </h1>
             
-            <p class="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto mb-10 leading-relaxed">
+            <p class="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto mb-10 leading-relaxed dark:text-slate-300">
                 SHNQ, GOST va qurilish qoidalarini soniyalar ichida tahlil qiling. Mutaxassislar uchun maxsus ishlab chiqilgan sun'iy intellekt.
             </p>
             
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
                 <a href="/chat.html">
-                    <button class="w-full sm:w-auto px-8 py-4 rounded-xl bg-primary text-white text-base font-semibold hover:bg-primary-hover shadow-xl shadow-blue-500/20 hover:-translate-y-1 transition-all flex items-center justify-center gap-2 min-w-[180px]">
+                    <button class="w-full sm:w-auto px-8 py-4 rounded-xl bg-primary text-white text-base font-semibold hover:bg-primary-hover shadow-xl shadow-blue-500/20 hover:-translate-y-1 transition-all flex items-center justify-center gap-2 min-w-[180px] dark:bg-blue-700 dark:hover:bg-blue-600">
                         <span class="material-symbols-outlined">chat</span>
                         Suhbatni boshlash
                     </button>
                 </a>
-                <button class="w-full sm:w-auto px-8 py-4 rounded-xl bg-white border border-border-color text-text-main text-base font-semibold hover:bg-slate-50 hover:border-slate-300 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all flex items-center justify-center gap-2 min-w-[180px]">
-                    <span class="material-symbols-outlined text-blue-600">play_arrow</span>
+                <button class="w-full sm:w-auto px-8 py-4 rounded-xl bg-white border border-border-color text-text-main text-base font-semibold hover:bg-slate-50 hover:border-slate-300 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all flex items-center justify-center gap-2 min-w-[180px] dark:bg-dark-card dark:border-dark-border dark:text-dark-text dark:hover:bg-slate-800">
+                    <span class="material-symbols-outlined text-blue-600 dark:text-blue-400">play_arrow</span>
                     Demo ko'rish
                 </button>
             </div>
             
             <!-- CHAT ANIMATION SECTION -->
             <div class="relative mx-auto max-w-5xl">
-                <div class="rounded-2xl bg-white p-2 shadow-2xl shadow-blue-900/5 border border-slate-200 ring-1 ring-slate-900/5">
-                    <div class="rounded-xl bg-gradient-to-b from-slate-50 to-white border border-slate-100 overflow-hidden relative">
+                <div class="rounded-2xl bg-white p-2 shadow-2xl shadow-blue-900/5 border border-slate-200 ring-1 ring-slate-900/5 dark:bg-dark-card dark:border-dark-border dark:shadow-blue-900/10">
+                    <div class="rounded-xl bg-gradient-to-b from-slate-50 to-white border border-slate-100 overflow-hidden relative dark:from-slate-900/50 dark:to-slate-900/30 dark:border-slate-700">
                         <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent"></div>
                         
                         <!-- Chat Container -->
                         <div class="p-8 min-h-[400px] flex flex-col">
                             <!-- Chat Header -->
-                            <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
+                            <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100 dark:border-slate-700">
                                 <div class="size-10 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center shadow-md">
                                     <span class="material-symbols-outlined text-white text-[20px]">smart_toy</span>
                                 </div>
                                 <div>
-                                    <h3 class="text-sm font-bold text-text-main">SHNQ AI Yordamchi</h3>
-                                    <p class="text-xs text-blue-600">Onlayn</p>
+                                    <h3 class="text-sm font-bold text-text-main dark:text-dark-text">SHNQ AI Yordamchi</h3>
+                                    <p class="text-xs text-blue-600 dark:text-blue-400">Onlayn</p>
                                 </div>
                             </div>
                             
@@ -208,11 +264,11 @@
                                         <div class="size-8 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center flex-shrink-0 shadow-sm">
                                             <span class="material-symbols-outlined text-white text-[16px]">smart_toy</span>
                                         </div>
-                                        <div class="bg-slate-100 rounded-2xl rounded-tl-md px-5 py-3 shadow-sm">
+                                        <div class="bg-slate-100 rounded-2xl rounded-tl-md px-5 py-3 shadow-sm dark:bg-slate-800">
                                             <div class="flex gap-1">
-                                                <div class="w-2 h-2 bg-slate-400 rounded-full typing-dot"></div>
-                                                <div class="w-2 h-2 bg-slate-400 rounded-full typing-dot"></div>
-                                                <div class="w-2 h-2 bg-slate-400 rounded-full typing-dot"></div>
+                                                <div class="w-2 h-2 bg-slate-400 rounded-full typing-dot dark:bg-slate-500"></div>
+                                                <div class="w-2 h-2 bg-slate-400 rounded-full typing-dot dark:bg-slate-500"></div>
+                                                <div class="w-2 h-2 bg-slate-400 rounded-full typing-dot dark:bg-slate-500"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -224,19 +280,19 @@
                                         <div class="size-8 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center flex-shrink-0 shadow-sm">
                                             <span class="material-symbols-outlined text-white text-[16px]">smart_toy</span>
                                         </div>
-                                        <div class="bg-slate-100 rounded-2xl rounded-tl-md px-5 py-3 max-w-md shadow-sm">
-                                            <p class="text-sm text-slate-700" id="botText"></p>
+                                        <div class="bg-slate-100 rounded-2xl rounded-tl-md px-5 py-3 max-w-md shadow-sm dark:bg-slate-800">
+                                            <p class="text-sm text-slate-700 dark:text-slate-300" id="botText"></p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             
                             <!-- Chat Input -->
-                            <div class="mt-4 pt-4 border-t border-slate-100">
-                                <div class="flex items-center gap-2 bg-white rounded-xl px-4 py-2.5 border border-slate-200 shadow-sm">
-                                    <span class="material-symbols-outlined text-slate-400 text-[20px]">chat_bubble</span>
-                                    <input type="text" placeholder="Savolingizni yozing..."  style="border-radius:10px ; border: 1px none;" class="flex-1 outline-none text-sm text-slate-700 placeholder-slate-400 bg-transparent" disabled/>
-                                    <button class="px-4 py-1.5 rounded-lg bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition-colors" disabled>
+                            <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-700">
+                                <div class="flex items-center gap-2 bg-white rounded-xl px-4 py-2.5 border border-slate-200 shadow-sm dark:bg-slate-800 dark:border-slate-700">
+                                    <span class="material-symbols-outlined text-slate-400 text-[20px] dark:text-slate-500">chat_bubble</span>
+                                    <input type="text" placeholder="Savolingizni yozing..." style="border-radius:10px ; border: 1px none;" class="flex-1 outline-none text-sm text-slate-700 placeholder-slate-400 bg-transparent dark:text-slate-300 dark:placeholder-slate-500" disabled/>
+                                    <button class="px-4 py-1.5 rounded-lg bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition-colors dark:bg-blue-700 dark:hover:bg-blue-600" disabled>
                                         Yuborish
                                     </button>
                                 </div>
@@ -248,55 +304,55 @@
         </div>
     </section>
 
-    <section class="py-24 bg-slate-50 border-y border-border-color relative overflow-hidden">
+    <section class="py-24 bg-slate-50 border-y border-border-color relative overflow-hidden dark:bg-slate-900/50 dark:border-dark-border">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="group p-6 rounded-2xl bg-white border border-slate-100 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300">
-                    <div class="size-12 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+                <div class="group p-6 rounded-2xl bg-white border border-slate-100 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300 dark:bg-dark-card dark:border-slate-800 dark:hover:border-blue-900">
+                    <div class="size-12 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 dark:bg-blue-900/30 dark:text-blue-400">
                         <span class="material-symbols-outlined text-[24px]">architecture</span>
                     </div>
-                    <h3 class="text-lg font-bold text-text-main mb-2">Shaharsozlik</h3>
-                    <p class="text-sm text-text-secondary leading-relaxed">Loyihalashtirish me'yorlari va qoidalari bo'yicha aniq ma'lumotlar.</p>
+                    <h3 class="text-lg font-bold text-text-main mb-2 dark:text-dark-text">Shaharsozlik</h3>
+                    <p class="text-sm text-text-secondary leading-relaxed dark:text-slate-400">Loyihalashtirish me'yorlari va qoidalari bo'yicha aniq ma'lumotlar.</p>
                 </div>
-                <div class="group p-6 rounded-2xl bg-white border border-slate-100 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300">
-                    <div class="size-12 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+                <div class="group p-6 rounded-2xl bg-white border border-slate-100 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300 dark:bg-dark-card dark:border-slate-800 dark:hover:border-blue-900">
+                    <div class="size-12 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 dark:bg-blue-900/30 dark:text-blue-400">
                         <span class="material-symbols-outlined text-[24px]">rule</span>
                     </div>
-                    <h3 class="text-lg font-bold text-text-main mb-2">Standartlar</h3>
-                    <p class="text-sm text-text-secondary leading-relaxed">Davlat standartlari (GOST) bazasi bo'yicha tezkor qidiruv.</p>
+                    <h3 class="text-lg font-bold text-text-main mb-2 dark:text-dark-text">Standartlar</h3>
+                    <p class="text-sm text-text-secondary leading-relaxed dark:text-slate-400">Davlat standartlari (GOST) bazasi bo'yicha tezkor qidiruv.</p>
                 </div>
-                <div class="group p-6 rounded-2xl bg-white border border-slate-100 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300">
-                    <div class="size-12 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+                <div class="group p-6 rounded-2xl bg-white border border-slate-100 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300 dark:bg-dark-card dark:border-slate-800 dark:hover:border-blue-900">
+                    <div class="size-12 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 dark:bg-blue-900/30 dark:text-blue-400">
                         <span class="material-symbols-outlined text-[24px]">shield</span>
                     </div>
-                    <h3 class="text-lg font-bold text-text-main mb-2">Xavfsizlik</h3>
-                    <p class="text-sm text-text-secondary leading-relaxed">Texnik reglamentlar va xavfsizlik yo'riqnomalari.</p>
+                    <h3 class="text-lg font-bold text-text-main mb-2 dark:text-dark-text">Xavfsizlik</h3>
+                    <p class="text-sm text-text-secondary leading-relaxed dark:text-slate-400">Texnik reglamentlar va xavfsizlik yo'riqnomalari.</p>
                 </div>
-                <div class="group p-6 rounded-2xl bg-white border border-slate-100 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300">
-                    <div class="size-12 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+                <div class="group p-6 rounded-2xl bg-white border border-slate-100 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300 dark:bg-dark-card dark:border-slate-800 dark:hover:border-blue-900">
+                    <div class="size-12 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 dark:bg-blue-900/30 dark:text-blue-400">
                         <span class="material-symbols-outlined text-[24px]">functions</span>
                     </div>
-                    <h3 class="text-lg font-bold text-text-main mb-2">Hisob-kitob</h3>
-                    <p class="text-sm text-text-secondary leading-relaxed">Qurilish smeta hisoblari va byudjetlashtirishda yordam.</p>
+                    <h3 class="text-lg font-bold text-text-main mb-2 dark:text-dark-text">Hisob-kitob</h3>
+                    <p class="text-sm text-text-secondary leading-relaxed dark:text-slate-400">Qurilish smeta hisoblari va byudjetlashtirishda yordam.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-24 bg-white relative overflow-hidden">
+    <section class="py-24 bg-white relative overflow-hidden dark:bg-dark-bg">
         <div class="max-w-4xl mx-auto px-4 relative z-10 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-text-main mb-6">Ish jarayonini avtomatlashtiring</h2>
-            <p class="text-text-secondary text-lg mb-10 leading-relaxed max-w-2xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-text-main mb-6 dark:text-dark-text">Ish jarayonini avtomatlashtiring</h2>
+            <p class="text-text-secondary text-lg mb-10 leading-relaxed max-w-2xl mx-auto dark:text-slate-300">
                 Minglab me'yoriy hujjatlarni varaqlashdan charchadingizmi? SHNQ AI sizga kerakli ma'lumotni soniyalarda topib beradi.
             </p>
-            <button class="px-8 py-4 rounded-xl bg-blue-600 text-white text-base font-bold hover:bg-blue-700 shadow-lg shadow-blue-500/20 transition-all hover:-translate-y-0.5">
+            <button class="px-8 py-4 rounded-xl bg-blue-600 text-white text-base font-bold hover:bg-blue-700 shadow-lg shadow-blue-500/20 transition-all hover:-translate-y-0.5 dark:bg-blue-700 dark:hover:bg-blue-600">
                 Bepul sinab ko'rish
             </button>
         </div>
     </section>
 </main>
 
-<footer class="bg-white border-t border-border-color pt-16 pb-8">
+<footer class="bg-white border-t border-border-color pt-16 pb-8 dark:bg-dark-card dark:border-dark-border">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             <div class="col-span-1 md:col-span-1">
@@ -304,46 +360,47 @@
                     <div class="size-8 rounded-lg bg-blue-600 flex items-center justify-center text-white">
                         <span class="material-symbols-outlined text-[20px]">smart_toy</span>
                     </div>
-                    <span class="text-lg font-bold text-text-main">AI Assistent</span>
+                    <span class="text-lg font-bold text-text-main dark:text-dark-text">AI Assistent</span>
                 </div>
-                <p class="text-text-secondary text-sm leading-relaxed mb-6">
+                <p class="text-text-secondary text-sm leading-relaxed mb-6 dark:text-slate-400">
                     Qurilish sohasi uchun ishonchli sun'iy intellekt maslahatchisi.
                 </p>
             </div>
             <div>
-                <h4 class="font-bold text-text-main mb-4 text-sm">Menu</h4>
-                <ul class="space-y-3 text-sm text-text-secondary">
-                    <li><a class="hover:text-blue-600 transition-colors" href="#">Bosh sahifa</a></li>
-                    <li><a class="hover:text-blue-600 transition-colors" href="#">Biz haqimizda</a></li>
-                    <li><a class="hover:text-blue-600 transition-colors" href="/price.html">Narxlar</a></li>
+                <h4 class="font-bold text-text-main mb-4 text-sm dark:text-dark-text">Menu</h4>
+                <ul class="space-y-3 text-sm text-text-secondary dark:text-slate-400">
+                    <li><a class="hover:text-blue-600 transition-colors dark:hover:text-blue-400" href="#">Bosh sahifa</a></li>
+                    <li><a class="hover:text-blue-600 transition-colors dark:hover:text-blue-400" href="#">Hujjatlar</a></li>
+                    <li><a class="hover:text-blue-600 transition-colors dark:hover:text-blue-400" href="/price.html">Narxlar</a></li>
                 </ul>
             </div>
             <div>
-                <h4 class="font-bold text-text-main mb-4 text-sm">Yordam</h4>
-                <ul class="space-y-3 text-sm text-text-secondary">
-                    <li><a class="hover:text-blue-600 transition-colors" href="#">FAQ</a></li>
-                    <li><a class="hover:text-blue-600 transition-colors" href="#">Bog'lanish</a></li>
-                    <li><a class="hover:text-blue-600 transition-colors" href="#">Qo'llanma</a></li>
+                <h4 class="font-bold text-text-main mb-4 text-sm dark:text-dark-text">Yordam</h4>
+                <ul class="space-y-3 text-sm text-text-secondary dark:text-slate-400">
+                    <li><a class="hover:text-blue-600 transition-colors dark:hover:text-blue-400" href="#">FAQ</a></li>
+                    <li><a class="hover:text-blue-600 transition-colors dark:hover:text-blue-400" href="#">Bog'lanish</a></li>
+                    <li><a class="hover:text-blue-600 transition-colors dark:hover:text-blue-400" href="#">Qo'llanma</a></li>
                 </ul>
             </div>
             <div>
-                <h4 class="font-bold text-text-main mb-4 text-sm">Huquqiy</h4>
-                <ul class="space-y-3 text-sm text-text-secondary">
-                    <li><a class="hover:text-blue-600 transition-colors" href="#">Maxfiylik siyosati</a></li>
-                    <li><a class="hover:text-blue-600 transition-colors" href="#">Foydalanish shartlari</a></li>
+                <h4 class="font-bold text-text-main mb-4 text-sm dark:text-dark-text">Huquqiy</h4>
+                <ul class="space-y-3 text-sm text-text-secondary dark:text-slate-400">
+                    <li><a class="hover:text-blue-600 transition-colors dark:hover:text-blue-400" href="#">Maxfiylik siyosati</a></li>
+                    <li><a class="hover:text-blue-600 transition-colors dark:hover:text-blue-400" href="#">Foydalanish shartlari</a></li>
                 </ul>
             </div>
         </div>
-        <div class="pt-8 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-text-secondary">
+        <div class="pt-8 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-text-secondary dark:border-slate-800 dark:text-slate-500">
             <p>© 2023 SHNQ AI Assistent. Barcha huquqlar himoyalangan.</p>
             <div class="flex gap-4">
-                <a class="text-slate-400 hover:text-blue-600 transition-colors" href="#"><span class="material-symbols-outlined text-lg">public</span></a>
-                <a class="text-slate-400 hover:text-blue-600 transition-colors" href="#"><span class="material-symbols-outlined text-lg">mail</span></a>
+                <a class="text-slate-400 hover:text-blue-600 transition-colors dark:text-slate-500 dark:hover:text-blue-400" href="#"><span class="material-symbols-outlined text-lg">public</span></a>
+                <a class="text-slate-400 hover:text-blue-600 transition-colors dark:text-slate-500 dark:hover:text-blue-400" href="#"><span class="material-symbols-outlined text-lg">mail</span></a>
             </div>
         </div>
     </div>
 </footer>
 
+<script src="translations.js"></script>
 <script>
     // Chat Animation Script
     const userMessage = "SHNQ AI yordamchi qanday ishlaydi?";
@@ -407,6 +464,102 @@
             }, 50);
         }, 500);
     }
+    
+    // Dark/Light Mode Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const sunIcon = document.getElementById('sun-icon');
+    const moonIcon = document.getElementById('moon-icon');
+    
+    // Check for saved theme preference or prefer-color-scheme
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    const currentTheme = localStorage.getItem('theme');
+    
+    if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
+        document.documentElement.classList.add('dark');
+        sunIcon.classList.remove('hidden');
+        moonIcon.classList.add('hidden');
+    } else {
+        document.documentElement.classList.remove('dark');
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.remove('hidden');
+    }
+    
+    themeToggle.addEventListener('click', () => {
+        if (document.documentElement.classList.contains('dark')) {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+            sunIcon.classList.add('hidden');
+            moonIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+            sunIcon.classList.remove('hidden');
+            moonIcon.classList.add('hidden');
+        }
+    });
+
+    const langButtons = document.querySelectorAll('.lang-btn');
+
+    const setActiveLangButton = (lang) => {
+        langButtons.forEach((button) => {
+            const isActive = button.dataset.lang === lang;
+            button.classList.toggle('bg-white', isActive);
+            button.classList.toggle('text-slate-700', isActive);
+            button.classList.toggle('shadow-sm', isActive);
+            button.classList.toggle('dark:bg-slate-700', isActive);
+            button.classList.toggle('dark:text-white', isActive);
+        });
+    };
+
+    const applyTranslations = (translations) => {
+        document.querySelectorAll('[data-i18n]').forEach((element) => {
+            const key = element.getAttribute('data-i18n');
+            if (translations[key]) {
+                element.textContent = translations[key];
+            }
+        });
+    };
+
+    const getFallbackTranslations = (lang) => {
+        if (window.TRANSLATIONS && window.TRANSLATIONS[lang]) {
+            return window.TRANSLATIONS[lang];
+        }
+        return null;
+    };
+
+    const loadTranslations = async (lang) => {
+        let translations = null;
+        try {
+            const response = await fetch(`lang_${lang}.json`, { cache: 'no-store' });
+            if (response.ok) {
+                translations = await response.json();
+            }
+        } catch (error) {
+            console.error('Failed to load translations:', error);
+        }
+
+        if (!translations) {
+            translations = getFallbackTranslations(lang);
+        }
+
+        if (!translations) {
+            return;
+        }
+
+        applyTranslations(translations);
+        document.documentElement.setAttribute('lang', lang);
+        localStorage.setItem('lang', lang);
+        setActiveLangButton(lang);
+    };
+
+    const initialLang = localStorage.getItem('lang') || document.documentElement.getAttribute('lang') || 'uz';
+    loadTranslations(initialLang);
+
+    langButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            loadTranslations(button.dataset.lang);
+        });
+    });
     
     // Start animation when page loads
     window.addEventListener('load', () => {
