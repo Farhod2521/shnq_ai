@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Kirish / Ro'yxatdan o'tish - AI Assistent</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/flag-icons/css/flag-icons.min.css" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2563eb",
+                        "primary-hover": "#1d4ed8",
+                        "primary-light": "#eff6ff",
+                        "background-light": "#ffffff",
+                        "background-main": "#f8fafc",
+                        "border-color": "#e2e8f0",
+                        "text-main": "#0f172a",
+                        "text-secondary": "#64748b",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+        .dark .text-text-main {
+            color: #e2e8f0;
+        }
+        .dark .text-text-secondary {
+            color: #94a3b8;
+        }
+        .dark .border-border-color {
+            border-color: #1f2937;
+        }
+        .dark .bg-background-main {
+            background-color: #0b1120;
+        }
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out both;
+        }
+        .float-slow {
+            animation: float 8s ease-in-out infinite;
+        }
+        .float-fast {
+            animation: float 5s ease-in-out infinite;
+        }
+        .pulse-soft {
+            animation: pulseSoft 4s ease-in-out infinite;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        @keyframes pulseSoft {
+            0%, 100% {
+                opacity: 0.6;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background-main text-text-main font-display antialiased flex flex-col min-h-screen selection:bg-blue-100 selection:text-blue-900 dark:selection:bg-blue-900 dark:selection:text-blue-100">
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-border-color dark:bg-slate-900/90 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+            <a class="flex items-center gap-3" href="index.html">
+                <div class="size-10 rounded-xl bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-500/20 text-white">
+                    <span class="material-symbols-outlined text-[24px]">smart_toy</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-lg font-bold leading-tight text-text-main">AI Assistent</span>
+                    <span class="text-[10px] font-medium text-blue-600 uppercase tracking-widest">SHNQ</span>
+                </div>
+            </a>
+            <div class="flex items-center gap-3">
+                <div class="flex items-center gap-2">
+                    <div class="relative">
+                        <button id="lang-menu-button" class="flex items-center gap-2 px-4 py-2 rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm hover:shadow-md transition-all dark:bg-slate-800 dark:text-slate-200 dark:border-slate-700" type="button" aria-haspopup="true" aria-expanded="false">
+                            <span id="current-lang-flag" class="fi fi-uz inline-flex size-5 rounded-full border border-slate-200 dark:border-slate-700"></span>
+                            <span id="current-lang-label" class="text-sm font-semibold">O'zbekcha</span>
+                            <span class="material-symbols-outlined text-[18px]">expand_more</span>
+                        </button>
+                        <div id="lang-menu" class="hidden absolute right-0 mt-2 w-48 rounded-2xl border border-slate-200 bg-white shadow-lg p-1 dark:bg-slate-900 dark:border-slate-700">
+                            <button class="lang-option w-full flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800" data-lang="uz" data-label="O'zbekcha" data-flag-class="fi fi-uz" type="button">
+                                <span class="fi fi-uz inline-flex size-5 rounded-full border border-slate-200 dark:border-slate-700"></span>
+                                O'zbekcha   
+                            </button>
+                            <button class="lang-option w-full flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800" data-lang="ru" data-label="???????" data-flag-class="fi fi-ru" type="button">
+                                <span class="fi fi-ru inline-flex size-5 rounded-full border border-slate-200 dark:border-slate-700"></span>
+                                ???????</button>
+                            <button class="lang-option w-full flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800" data-lang="en" data-label="English" data-flag-class="fi fi-gb" type="button">
+                                <span class="fi fi-gb inline-flex size-5 rounded-full border border-slate-200 dark:border-slate-700"></span>
+                                English
+                            </button>
+                            <button class="lang-option w-full flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800" data-lang="oz" data-label="???????" data-flag-class="fi fi-uz" type="button">
+                                <span class="fi fi-uz inline-flex size-5 rounded-full border border-slate-200 dark:border-slate-700"></span>
+                                ???????</button>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <button id="theme-menu-button" class="flex items-center gap-2 px-4 py-2 rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm hover:shadow-md transition-all dark:bg-slate-800 dark:text-slate-200 dark:border-slate-700" type="button" aria-haspopup="true" aria-expanded="false">
+                            <span id="current-theme-icon" class="material-symbols-outlined text-[18px]">light_mode</span>
+                            <span id="current-theme-label" class="text-sm font-semibold">Kun</span>
+                            <span class="material-symbols-outlined text-[18px]">expand_more</span>
+                        </button>
+                        <div id="theme-menu" class="hidden absolute right-0 mt-2 w-44 rounded-2xl border border-slate-200 bg-white shadow-lg p-1 dark:bg-slate-900 dark:border-slate-700">
+                            <button class="theme-option w-full flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800" data-theme="light" data-label="Kun" data-icon="light_mode" type="button">
+                                <span class="material-symbols-outlined text-[18px]">light_mode</span>
+                                Kun
+                            </button>
+                            <button class="theme-option w-full flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800" data-theme="dark" data-label="Tun" data-icon="dark_mode" type="button">
+                                <span class="material-symbols-outlined text-[18px]">dark_mode</span>
+                                Tun
+                            </button>
+                            <button class="theme-option w-full flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800" data-theme="system" data-label="Zamonaviy" data-icon="auto_awesome" type="button">
+                                <span class="material-symbols-outlined text-[18px]">auto_awesome</span>
+                                Zamonaviy
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <a class="text-sm font-semibold text-text-secondary hover:text-primary transition-colors dark:text-slate-300 dark:hover:text-blue-300" href="index.html">
+                    Bosh sahifaga qaytish
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="flex-1 relative">
+    <div class="absolute inset-0 bg-slate-50/60 -z-10 dark:bg-slate-950/70"></div>
+    <div class="absolute top-0 right-0 -mt-20 -mr-20 w-[30rem] h-[30rem] bg-blue-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob pointer-events-none dark:bg-blue-900/30"></div>
+    <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-[30rem] h-[30rem] bg-blue-100/50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob pointer-events-none dark:bg-blue-800/20"></div>
+
+    <section class="py-16 md:py-24 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-[1.1fr,0.9fr] bg-white border border-slate-200 rounded-3xl shadow-2xl shadow-blue-500/10 overflow-hidden dark:bg-slate-900 dark:border-slate-800 fade-in">
+            <div class="p-8 md:p-12">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="size-10 rounded-xl bg-blue-600 flex items-center justify-center text-white shadow-lg shadow-blue-500/30">
+                        <span class="material-symbols-outlined text-[22px]">lock</span>
+                    </div>
+                    <div>
+                        <p class="text-xs uppercase tracking-widest text-blue-600 font-bold">Xush kelibsiz</p>
+                        <h1 class="text-2xl md:text-3xl font-bold text-text-main">SHNQ AI hisobingiz</h1>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 rounded-2xl bg-slate-100 border border-slate-200 p-1 mb-8 dark:bg-slate-800 dark:border-slate-700">
+                    <button id="tab-login" class="py-3 text-xs font-bold tracking-wide uppercase bg-blue-600 text-white rounded-xl transition-colors">
+                        Kirish
+                    </button>
+                    <button id="tab-register" class="py-3 text-xs font-bold tracking-wide uppercase text-text-secondary hover:text-text-main rounded-xl transition-colors dark:text-slate-300">
+                        Ro'yxatdan o'tish
+                    </button>
+                </div>
+
+                <div id="panel-login">
+                    <h2 class="text-lg font-bold text-text-main mb-6">Tizimga kirish</h2>
+                    <form class="space-y-5">
+                        <div>
+                            <label class="block text-sm font-semibold text-text-main mb-2" for="login-phone">Telefon raqam</label>
+                            <div class="relative">
+                                <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">call</span>
+                                <input class="w-full pl-11 pr-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-text-main placeholder-slate-400 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none font-medium dark:bg-slate-800 dark:border-slate-700 dark:text-slate-200 dark:placeholder-slate-500" id="login-phone" placeholder="+998 90 123 45 67" type="tel"/>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-text-main mb-2" for="login-password">Parol</label>
+                            <div class="relative">
+                                <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">key</span>
+                                <input class="w-full pl-11 pr-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-text-main placeholder-slate-400 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none font-medium dark:bg-slate-800 dark:border-slate-700 dark:text-slate-200 dark:placeholder-slate-500" id="login-password" placeholder="Parolni kiriting" type="password"/>
+                            </div>
+                        </div>
+                        <button class="w-full py-3.5 rounded-xl bg-primary text-white font-semibold hover:bg-primary-hover shadow-lg shadow-blue-500/25 active:scale-[0.98] transition-all" type="submit">
+                            Kirish
+                        </button>
+                    </form>
+                </div>
+
+                <div id="panel-register" class="hidden">
+                    <h2 class="text-lg font-bold text-text-main mb-6">Ro'yxatdan o'tish</h2>
+                    <form class="space-y-5">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-semibold text-text-main mb-2" for="register-first">Ism</label>
+                                <input class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-text-main placeholder-slate-400 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none font-medium dark:bg-slate-800 dark:border-slate-700 dark:text-slate-200 dark:placeholder-slate-500" id="register-first" placeholder="Ismingiz" type="text"/>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-text-main mb-2" for="register-last">Familiya</label>
+                                <input class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-text-main placeholder-slate-400 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none font-medium dark:bg-slate-800 dark:border-slate-700 dark:text-slate-200 dark:placeholder-slate-500" id="register-last" placeholder="Familiyangiz" type="text"/>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-text-main mb-2" for="register-phone">Telefon raqam</label>
+                            <input class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-text-main placeholder-slate-400 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none font-medium dark:bg-slate-800 dark:border-slate-700 dark:text-slate-200 dark:placeholder-slate-500" id="register-phone" placeholder="+998 90 123 45 67" type="tel"/>
+                        </div>
+                        <button class="w-full py-3.5 rounded-xl bg-primary text-white font-semibold hover:bg-primary-hover shadow-lg shadow-blue-500/25 active:scale-[0.98] transition-all" type="submit">
+                            Ro'yxatdan o'tish
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="relative bg-gradient-to-br from-blue-600 via-blue-500 to-sky-400 p-10 text-white overflow-hidden">
+                <div class="absolute inset-0 opacity-30">
+                    <svg class="w-full h-full" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="120" cy="140" r="80" fill="white" opacity="0.2"></circle>
+                        <circle cx="520" cy="120" r="120" fill="white" opacity="0.15"></circle>
+                        <circle cx="420" cy="420" r="160" fill="white" opacity="0.1"></circle>
+                    </svg>
+                </div>
+                <div class="relative z-10">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/20 text-xs font-bold uppercase tracking-widest mb-6">
+                        <span class="material-symbols-outlined text-[16px]">auto_awesome</span>
+                        Yangi tajriba
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">AI bilan me'yoriy hujjatlarni boshqaring</h3>
+                    <p class="text-sm text-white/90 mb-8">
+                        SHNQ va GOST hujjatlarini tez toping, saqlang va ulashing. Hisob yaratib, imkoniyatlarni kengaytiring.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="bg-white/15 border border-white/20 rounded-2xl p-4 backdrop-blur-md float-slow">
+                            <div class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-[22px]">task_alt</span>
+                                <div>
+                                    <p class="text-sm font-semibold">Tezkor qidiruv</p>
+                                    <p class="text-xs text-white/80">Hujjatlar soniyalarda topiladi</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white/15 border border-white/20 rounded-2xl p-4 backdrop-blur-md float-fast">
+                            <div class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-[22px]">shield</span>
+                                <div>
+                                    <p class="text-sm font-semibold">Ishonchli manba</p>
+                                    <p class="text-xs text-white/80">Rasmiy hujjatlar bazasi</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white/15 border border-white/20 rounded-2xl p-4 backdrop-blur-md pulse-soft">
+                            <div class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-[22px]">bolt</span>
+                                <div>
+                                    <p class="text-sm font-semibold">Personal tavsiyalar</p>
+                                    <p class="text-xs text-white/80">Sizga mos imkoniyatlar</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script src="translations.js"></script>
+<script>
+    const langMenuButton = document.getElementById('lang-menu-button');
+    const langMenu = document.getElementById('lang-menu');
+    const currentLangLabel = document.getElementById('current-lang-label');
+    const currentLangFlag = document.getElementById('current-lang-flag');
+    const langOptions = document.querySelectorAll('.lang-option');
+
+    const themeMenuButton = document.getElementById('theme-menu-button');
+    const themeMenu = document.getElementById('theme-menu');
+    const currentThemeLabel = document.getElementById('current-theme-label');
+    const currentThemeIcon = document.getElementById('current-theme-icon');
+    const themeOptions = document.querySelectorAll('.theme-option');
+
+    const closeMenus = () => {
+        if (langMenu) {
+            langMenu.classList.add('hidden');
+            langMenuButton?.setAttribute('aria-expanded', 'false');
+        }
+        if (themeMenu) {
+            themeMenu.classList.add('hidden');
+            themeMenuButton?.setAttribute('aria-expanded', 'false');
+        }
+    };
+
+    const toggleMenu = (button, menu) => {
+        if (!menu || !button) {
+            return;
+        }
+        const isHidden = menu.classList.contains('hidden');
+        closeMenus();
+        if (isHidden) {
+            menu.classList.remove('hidden');
+            button.setAttribute('aria-expanded', 'true');
+        }
+    };
+
+    langMenuButton?.addEventListener('click', (event) => {
+        event.stopPropagation();
+        toggleMenu(langMenuButton, langMenu);
+    });
+
+    themeMenuButton?.addEventListener('click', (event) => {
+        event.stopPropagation();
+        toggleMenu(themeMenuButton, themeMenu);
+    });
+
+    document.addEventListener('click', closeMenus);
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            closeMenus();
+        }
+    });
+
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+    const setActiveOption = (options, isActiveFn) => {
+        options.forEach((button) => {
+            const isActive = isActiveFn(button);
+            button.classList.toggle('bg-blue-50', isActive);
+            button.classList.toggle('text-blue-600', isActive);
+            button.classList.toggle('dark:bg-blue-900/40', isActive);
+            button.classList.toggle('dark:text-blue-300', isActive);
+        });
+    };
+
+    const applyTheme = (theme) => {
+        const resolvedTheme = theme === 'system'
+            ? (prefersDarkScheme.matches ? 'dark' : 'light')
+            : theme;
+
+        document.documentElement.classList.toggle('dark', resolvedTheme === 'dark');
+
+        const label = theme === 'system' ? 'Zamonaviy' : (theme === 'dark' ? 'Tun' : 'Kun');
+        const icon = theme === 'system' ? 'auto_awesome' : (theme === 'dark' ? 'dark_mode' : 'light_mode');
+
+        if (currentThemeLabel) {
+            currentThemeLabel.textContent = label;
+        }
+        if (currentThemeIcon) {
+            currentThemeIcon.textContent = icon;
+        }
+
+        setActiveOption(themeOptions, (btn) => btn.dataset.theme === theme);
+    };
+
+    themeOptions.forEach((button) => {
+        button.addEventListener('click', () => {
+            const theme = button.dataset.theme || 'system';
+            localStorage.setItem('theme', theme);
+            applyTheme(theme);
+            closeMenus();
+        });
+    });
+
+    const storedTheme = localStorage.getItem('theme') || 'system';
+    applyTheme(storedTheme);
+
+    prefersDarkScheme.addEventListener('change', () => {
+        const activeTheme = localStorage.getItem('theme') || 'system';
+        if (activeTheme === 'system') {
+            applyTheme('system');
+        }
+    });
+
+    const updateLangUI = (lang) => {
+        const selected = document.querySelector(`.lang-option[data-lang="${lang}"]`);
+        if (selected && currentLangLabel && currentLangFlag) {
+            currentLangLabel.textContent = selected.dataset.label || lang.toUpperCase();
+            const baseClass = 'inline-flex size-5 rounded-full border border-slate-200 dark:border-slate-700';
+            const flagClass = selected.dataset.flagClass || 'fi fi-uz';
+            currentLangFlag.className = `${flagClass} ${baseClass}`;
+        }
+        setActiveOption(langOptions, (btn) => btn.dataset.lang === lang);
+    };
+
+    const applyTranslations = (translations) => {
+        document.querySelectorAll('[data-i18n]').forEach((element) => {
+            const key = element.getAttribute('data-i18n');
+            if (translations[key]) {
+                element.textContent = translations[key];
+            }
+        });
+    };
+
+    const getFallbackTranslations = (lang) => {
+        if (window.TRANSLATIONS && window.TRANSLATIONS[lang]) {
+            return window.TRANSLATIONS[lang];
+        }
+        return null;
+    };
+
+    const loadTranslations = async (lang) => {
+        let translations = null;
+        try {
+            const response = await fetch(`lang_${lang}.json`, { cache: 'no-store' });
+            if (response.ok) {
+                translations = await response.json();
+            }
+        } catch (error) {
+            console.error('Failed to load translations:', error);
+        }
+
+        if (!translations) {
+            translations = getFallbackTranslations(lang);
+        }
+
+        if (!translations) {
+            updateLangUI(lang);
+            return;
+        }
+
+        applyTranslations(translations);
+        document.documentElement.setAttribute('lang', lang);
+        localStorage.setItem('lang', lang);
+        updateLangUI(lang);
+    };
+
+    const initialLang = localStorage.getItem('lang') || document.documentElement.getAttribute('lang') || 'uz';
+    loadTranslations(initialLang);
+
+    langOptions.forEach((button) => {
+        button.addEventListener('click', () => {
+            const lang = button.dataset.lang || 'uz';
+            loadTranslations(lang);
+            closeMenus();
+        });
+    });
+
+    const tabLogin = document.getElementById('tab-login');
+    const tabRegister = document.getElementById('tab-register');
+    const panelLogin = document.getElementById('panel-login');
+    const panelRegister = document.getElementById('panel-register');
+
+    const setActiveTab = (tab) => {
+        const isLogin = tab === 'login';
+        panelLogin.classList.toggle('hidden', !isLogin);
+        panelRegister.classList.toggle('hidden', isLogin);
+
+        tabLogin.classList.toggle('bg-blue-600', isLogin);
+        tabLogin.classList.toggle('text-white', isLogin);
+        tabLogin.classList.toggle('bg-slate-50', !isLogin);
+        tabLogin.classList.toggle('text-text-secondary', !isLogin);
+        tabLogin.classList.toggle('dark:bg-slate-800', !isLogin);
+
+        tabRegister.classList.toggle('bg-blue-600', !isLogin);
+        tabRegister.classList.toggle('text-white', !isLogin);
+        tabRegister.classList.toggle('bg-slate-50', isLogin);
+        tabRegister.classList.toggle('text-text-secondary', isLogin);
+        tabRegister.classList.toggle('dark:bg-slate-800', isLogin);
+    };
+
+    tabLogin.addEventListener('click', () => setActiveTab('login'));
+    tabRegister.addEventListener('click', () => setActiveTab('register'));
+</script>
+</body>
+</html>

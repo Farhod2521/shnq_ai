@@ -5,6 +5,7 @@
 <title>Narxlar - AI Assistent</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/flag-icons/css/flag-icons.min.css" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script id="tailwind-config">
         tailwind.config = {
@@ -102,25 +103,53 @@
 <a class="px-5 py-2 rounded-full text-text-secondary hover:text-text-main text-sm font-medium hover:bg-white hover:shadow-sm transition-all dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800" data-i18n="nav.contact" href="contact.html">Bog'lanish</a>
 </nav>
 <div class="flex items-center gap-3">
-<div class="hidden md:flex items-center gap-1 rounded-full bg-slate-100 border border-slate-200/60 p-1 text-[11px] font-semibold uppercase tracking-wide text-slate-600 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-200">
-<button class="lang-btn px-2.5 py-1 rounded-full bg-white text-slate-700 shadow-sm dark:bg-slate-700 dark:text-white" data-lang="uz" type="button">UZ</button>
-<button class="lang-btn px-2.5 py-1 rounded-full hover:bg-white/70 dark:hover:bg-slate-700" data-lang="ru" type="button">RU</button>
-<button class="lang-btn px-2.5 py-1 rounded-full hover:bg-white/70 dark:hover:bg-slate-700" data-lang="en" type="button">EN</button>
-<button class="lang-btn px-2.5 py-1 rounded-full hover:bg-white/70 dark:hover:bg-slate-700" data-lang="oz" type="button">O'Z</button>
-</div>
-<button id="theme-toggle" class="dark-mode-toggle p-2 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors">
-<span id="sun-icon" class="hidden dark:flex items-center justify-center">
-<svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
-<path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
-</svg>
-</span>
-<span id="moon-icon" class="flex dark:hidden items-center justify-center">
-<svg class="w-5 h-5 text-slate-700" fill="currentColor" viewBox="0 0 20 20">
-<path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-</svg>
-</span>
-</button>
-<a class="hidden md:flex items-center gap-2 text-sm font-semibold text-text-secondary hover:text-primary transition-colors mr-2" href="#">
+<div class="flex items-center gap-2">
+                <div class="relative">
+                    <button id="lang-menu-button" class="flex items-center gap-2 px-4 py-2 rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm hover:shadow-md transition-all dark:bg-slate-800 dark:text-slate-200 dark:border-slate-700" type="button" aria-haspopup="true" aria-expanded="false">
+                        <span id="current-lang-flag" class="fi fi-uz inline-flex size-5 rounded-full border border-slate-200 dark:border-slate-700"></span>
+                        <span id="current-lang-label" class="text-sm font-semibold">O'zbekcha</span>
+                        <span class="material-symbols-outlined text-[18px]">expand_more</span>
+                    </button>
+                    <div id="lang-menu" class="hidden absolute right-0 mt-2 w-48 rounded-2xl border border-slate-200 bg-white shadow-lg p-1 dark:bg-slate-900 dark:border-slate-700">
+                        <button class="lang-option w-full flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800" data-lang="uz" data-label="O'zbekcha" data-flag-class="fi fi-uz" type="button">
+                            <span class="fi fi-uz inline-flex size-5 rounded-full border border-slate-200 dark:border-slate-700"></span>
+                            O'zbekcha
+                        </button>
+                        <button class="lang-option w-full flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800" data-lang="ru" data-label="???????" data-flag-class="fi fi-ru" type="button">
+                            <span class="fi fi-ru inline-flex size-5 rounded-full border border-slate-200 dark:border-slate-700"></span>
+                            ???????</button>
+                        <button class="lang-option w-full flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800" data-lang="en" data-label="English" data-flag-class="fi fi-gb" type="button">
+                            <span class="fi fi-gb inline-flex size-5 rounded-full border border-slate-200 dark:border-slate-700"></span>
+                            English
+                        </button>
+                        <button class="lang-option w-full flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800" data-lang="oz" data-label="???????" data-flag-class="fi fi-uz" type="button">
+                            <span class="fi fi-uz inline-flex size-5 rounded-full border border-slate-200 dark:border-slate-700"></span>
+                            ???????</button>
+                    </div>
+                </div>
+                <div class="relative">
+                    <button id="theme-menu-button" class="flex items-center gap-2 px-4 py-2 rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm hover:shadow-md transition-all dark:bg-slate-800 dark:text-slate-200 dark:border-slate-700" type="button" aria-haspopup="true" aria-expanded="false">
+                        <span id="current-theme-icon" class="material-symbols-outlined text-[18px]">light_mode</span>
+                        <span id="current-theme-label" class="text-sm font-semibold">Kun</span>
+                        <span class="material-symbols-outlined text-[18px]">expand_more</span>
+                    </button>
+                    <div id="theme-menu" class="hidden absolute right-0 mt-2 w-44 rounded-2xl border border-slate-200 bg-white shadow-lg p-1 dark:bg-slate-900 dark:border-slate-700">
+                        <button class="theme-option w-full flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800" data-theme="light" data-label="Kun" data-icon="light_mode" type="button">
+                            <span class="material-symbols-outlined text-[18px]">light_mode</span>
+                            Kun
+                        </button>
+                        <button class="theme-option w-full flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800" data-theme="dark" data-label="Tun" data-icon="dark_mode" type="button">
+                            <span class="material-symbols-outlined text-[18px]">dark_mode</span>
+                            Tun
+                        </button>
+                        <button class="theme-option w-full flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800" data-theme="system" data-label="Zamonaviy" data-icon="auto_awesome" type="button">
+                            <span class="material-symbols-outlined text-[18px]">auto_awesome</span>
+                            Zamonaviy
+                        </button>
+                    </div>
+                </div>
+            </div>
+<a class="hidden md:flex items-center gap-2 text-sm font-semibold text-text-secondary hover:text-primary transition-colors mr-2" href="login_register.html">
                         Kirish
                     </a>
 <button class="hidden md:flex items-center gap-2 px-6 py-2.5 rounded-xl bg-primary text-white text-sm font-semibold hover:bg-primary-hover hover:shadow-lg hover:shadow-blue-500/25 active:scale-95 transition-all">
@@ -400,48 +429,118 @@
 
 <script src="translations.js"></script>
 <script>
-    const themeToggle = document.getElementById('theme-toggle');
-    const sunIcon = document.getElementById('sun-icon');
-    const moonIcon = document.getElementById('moon-icon');
+        const langMenuButton = document.getElementById('lang-menu-button');
+    const langMenu = document.getElementById('lang-menu');
+    const currentLangLabel = document.getElementById('current-lang-label');
+    const currentLangFlag = document.getElementById('current-lang-flag');
+    const langOptions = document.querySelectorAll('.lang-option');
 
-    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-    const currentTheme = localStorage.getItem('theme');
+    const themeMenuButton = document.getElementById('theme-menu-button');
+    const themeMenu = document.getElementById('theme-menu');
+    const currentThemeLabel = document.getElementById('current-theme-label');
+    const currentThemeIcon = document.getElementById('current-theme-icon');
+    const themeOptions = document.querySelectorAll('.theme-option');
 
-    if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
-        document.documentElement.classList.add('dark');
-        sunIcon.classList.remove('hidden');
-        moonIcon.classList.add('hidden');
-    } else {
-        document.documentElement.classList.remove('dark');
-        sunIcon.classList.add('hidden');
-        moonIcon.classList.remove('hidden');
-    }
+    const closeMenus = () => {
+        if (langMenu) {
+            langMenu.classList.add('hidden');
+            langMenuButton?.setAttribute('aria-expanded', 'false');
+        }
+        if (themeMenu) {
+            themeMenu.classList.add('hidden');
+            themeMenuButton?.setAttribute('aria-expanded', 'false');
+        }
+    };
 
-    themeToggle.addEventListener('click', () => {
-        if (document.documentElement.classList.contains('dark')) {
-            document.documentElement.classList.remove('dark');
-            localStorage.setItem('theme', 'light');
-            sunIcon.classList.add('hidden');
-            moonIcon.classList.remove('hidden');
-        } else {
-            document.documentElement.classList.add('dark');
-            localStorage.setItem('theme', 'dark');
-            sunIcon.classList.remove('hidden');
-            moonIcon.classList.add('hidden');
+    const toggleMenu = (button, menu) => {
+        if (!menu || !button) {
+            return;
+        }
+        const isHidden = menu.classList.contains('hidden');
+        closeMenus();
+        if (isHidden) {
+            menu.classList.remove('hidden');
+            button.setAttribute('aria-expanded', 'true');
+        }
+    };
+
+    langMenuButton?.addEventListener('click', (event) => {
+        event.stopPropagation();
+        toggleMenu(langMenuButton, langMenu);
+    });
+
+    themeMenuButton?.addEventListener('click', (event) => {
+        event.stopPropagation();
+        toggleMenu(themeMenuButton, themeMenu);
+    });
+
+    document.addEventListener('click', closeMenus);
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            closeMenus();
         }
     });
 
-    const langButtons = document.querySelectorAll('.lang-btn');
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
 
-    const setActiveLangButton = (lang) => {
-        langButtons.forEach((button) => {
-            const isActive = button.dataset.lang === lang;
-            button.classList.toggle('bg-white', isActive);
-            button.classList.toggle('text-slate-700', isActive);
-            button.classList.toggle('shadow-sm', isActive);
-            button.classList.toggle('dark:bg-slate-700', isActive);
-            button.classList.toggle('dark:text-white', isActive);
+    const setActiveOption = (options, isActiveFn) => {
+        options.forEach((button) => {
+            const isActive = isActiveFn(button);
+            button.classList.toggle('bg-blue-50', isActive);
+            button.classList.toggle('text-blue-600', isActive);
+            button.classList.toggle('dark:bg-blue-900/40', isActive);
+            button.classList.toggle('dark:text-blue-300', isActive);
         });
+    };
+
+    const applyTheme = (theme) => {
+        const resolvedTheme = theme === 'system'
+            ? (prefersDarkScheme.matches ? 'dark' : 'light')
+            : theme;
+
+        document.documentElement.classList.toggle('dark', resolvedTheme === 'dark');
+
+        const label = theme === 'system' ? 'Zamonaviy' : (theme === 'dark' ? 'Tun' : 'Kun');
+        const icon = theme === 'system' ? 'auto_awesome' : (theme === 'dark' ? 'dark_mode' : 'light_mode');
+
+        if (currentThemeLabel) {
+            currentThemeLabel.textContent = label;
+        }
+        if (currentThemeIcon) {
+            currentThemeIcon.textContent = icon;
+        }
+
+        setActiveOption(themeOptions, (btn) => btn.dataset.theme === theme);
+    };
+
+    themeOptions.forEach((button) => {
+        button.addEventListener('click', () => {
+            const theme = button.dataset.theme || 'system';
+            localStorage.setItem('theme', theme);
+            applyTheme(theme);
+            closeMenus();
+        });
+    });
+
+    const storedTheme = localStorage.getItem('theme') || 'system';
+    applyTheme(storedTheme);
+
+    prefersDarkScheme.addEventListener('change', () => {
+        const activeTheme = localStorage.getItem('theme') || 'system';
+        if (activeTheme === 'system') {
+            applyTheme('system');
+        }
+    });
+
+    const updateLangUI = (lang) => {
+        const selected = document.querySelector(`.lang-option[data-lang="${lang}"]`);
+        if (selected && currentLangLabel && currentLangFlag) {
+            currentLangLabel.textContent = selected.dataset.label || lang.toUpperCase();
+            const baseClass = 'inline-flex size-5 rounded-full border border-slate-200 dark:border-slate-700';
+            const flagClass = selected.dataset.flagClass || 'fi fi-uz';
+            currentLangFlag.className = `${flagClass} ${baseClass}`;
+        }
+        setActiveOption(langOptions, (btn) => btn.dataset.lang === lang);
     };
 
     const applyTranslations = (translations) => {
@@ -476,21 +575,24 @@
         }
 
         if (!translations) {
+            updateLangUI(lang);
             return;
         }
 
         applyTranslations(translations);
         document.documentElement.setAttribute('lang', lang);
         localStorage.setItem('lang', lang);
-        setActiveLangButton(lang);
+        updateLangUI(lang);
     };
 
     const initialLang = localStorage.getItem('lang') || document.documentElement.getAttribute('lang') || 'uz';
     loadTranslations(initialLang);
 
-    langButtons.forEach((button) => {
+    langOptions.forEach((button) => {
         button.addEventListener('click', () => {
-            loadTranslations(button.dataset.lang);
+            const lang = button.dataset.lang || 'uz';
+            loadTranslations(lang);
+            closeMenus();
         });
     });
 </script>
